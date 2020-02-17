@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Document</title>
+  <title>Camping Trip Planner</title>
 </head>
 <body>
-  
+  <div class="container">
+    <div id="initialize-trip">
+      <div class="jumbotron">
+        <h1>Camping Trip Planner</h1>
+      </div>
+      <form class="card">
+        <h4>Where are you going?</h4>
+        <input type="text" class="form-control" id="location" placeholder="" required>
+        <h4>Enter your name:</h4>
+        <input type="text" class="form-control" id="planner" required>
+        <h4>When is the trip?</h4>
+        <input type="date" class="form-control" id="date" required>
+        <button type="submit" class="btn btn-block">Start planning!</button>
+      </form>
+    </div>
+
+    <div id="add-items" class="row">
+      <div class="col-md-4" id="left-campers">
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <label for="item">Add shared items:</label>
+          <select class="form-control" id="known-item">
+            <option value="tent">tent</option>
+            <option value="firewood">firewood</option>
+            <option value="cooler">cooler</option>
+            <option value="stove">camp stove</option>
+            <option value="firstaid">first aid kit</option>
+            <option value="water filter">water filter</option>
+            <option value="hatchet">hatchet</option>
+            <option value="booze">booze</option>
+            <option value="transport">transportation</option>
+            <option value="lantern">lantern</option>
+            <option value="cards">cards</option>
+          </select>
+          <button class="btn" id="add-known-item">Add!</button>
+          <input type="text" class="form-control" name="other-item">
+          <button class="btn" id="add-other-item">Add!</button>
+        </div>
+        <div class="row" id="added-items">
+
+        </div>
+      </div>
+      <div class="col-md-4" id="right-campers">
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
