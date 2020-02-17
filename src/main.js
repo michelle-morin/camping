@@ -13,7 +13,6 @@ $(document).ready(function() {
     event.preventDefault();
     $('#outputResults').empty();
     const searchLocation = $('#searchLocation').val();
-    console.log(searchLocation);
     $('#searchLocation').val("");
 
     (async () => {
@@ -21,8 +20,16 @@ $(document).ready(function() {
       let lat = geoResponse.results[0].geometry.lat;
       let lng = geoResponse.results[0].geometry.lng;
       (async () => {
-        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng);
-        getElements(trailResponse);
+        let radius = 10;
+        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+        if (trailResponse.trails.length === 0) {
+          console.log("Larger radius");
+          let radius = 50;
+          let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+          getElements(trailResponse);
+        } else {
+          getElements(trailResponse);
+        }
       })();
     })();
 
