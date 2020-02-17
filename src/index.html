@@ -5,11 +5,11 @@
 </head>
 <body>
   <div class="container">
-    <div id="initialize-trip">
+    <div id="splash-screen">
       <div class="jumbotron">
         <h1>Camping Trip Planner</h1>
       </div>
-      <form class="card">
+      <form id="initialize-trip" class="card">
         <h4>Where are you going?</h4>
         <input type="text" class="form-control" id="location" placeholder="" required>
         <h4>Enter your name:</h4>
@@ -21,27 +21,49 @@
     </div>
 
     <div id="add-items" class="row">
+      <div class="row" id="header">
+        <div class="col-md-4">
+          <h3 id="trip-location"></h3>
+        </div>
+        <div class="col-md-4">
+          <h3 id="trip-date"></h3>
+        </div>
+        <div class="col-md-4" id="weather">
+        </div>
+      </div>
       <div class="col-md-4" id="left-campers">
       </div>
       <div class="col-md-4">
         <div class="row">
-          <label for="item">Add shared items:</label>
-          <select class="form-control" id="known-item">
-            <option value="tent">tent</option>
-            <option value="firewood">firewood</option>
-            <option value="cooler">cooler</option>
-            <option value="stove">camp stove</option>
-            <option value="firstaid">first aid kit</option>
-            <option value="water filter">water filter</option>
-            <option value="hatchet">hatchet</option>
-            <option value="booze">booze</option>
-            <option value="transport">transportation</option>
-            <option value="lantern">lantern</option>
-            <option value="cards">cards</option>
-          </select>
-          <button class="btn" id="add-known-item">Add!</button>
-          <input type="text" class="form-control" name="other-item">
-          <button class="btn" id="add-other-item">Add!</button>
+          <form id="add-camper">
+            <label for="camper">Camper's name:</label>
+            <input type="text" class="form-control" id="camper" required>
+            <button type="submit" class="btn">Add camper</button>
+          </form>
+        </div>
+        <div class="row">
+          <form id="add-known-item">
+            <label for="item">Add shared items:</label>
+            <select class="form-control" id="known-item">
+              <option value="tent">tent</option>
+              <option value="firewood">firewood</option>
+              <option value="cooler">cooler</option>
+              <option value="stove">camp stove</option>
+              <option value="firstaid">first aid kit</option>
+              <option value="water filter">water filter</option>
+              <option value="hatchet">hatchet</option>
+              <option value="booze">booze</option>
+              <option value="transport">transportation</option>
+              <option value="lantern">lantern</option>
+              <option value="cards">cards</option>
+            </select>
+            <button class="btn" type="submit">Add!</button>
+          </form>
+          <form id="add-other-item">
+            <label for="other-item">Add your own items:</label>
+            <input type="text" class="form-control" name="other-item">
+            <button class="btn" type="submit">Add!</button>
+          </form>
         </div>
         <div class="row" id="added-items">
 
