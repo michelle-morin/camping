@@ -29,3 +29,20 @@ export function addCamper() {
   });
 }
 
+export function addKnownItem() {
+  $("form#add-known-item").submit(function(event) {
+    event.preventDefault();
+    let item = $("#known-item").val();
+    let imgurl = `../img/${item}.jpeg`; // Requires figuring out local images.
+    $("#added-items").append(`<div class="card"><h3>${item}</h3><img src=${imgurl} alt="a photo of an item"></div>`);
+  });
+}
+
+export function addOtherItem() {
+  $("form#add-other-item").submit(function(event) {
+    event.preventDefault();
+    let item = $("#other-item").val();
+    let imgurl = `../img/default.jpeg`; // requires a default img
+    $("#added-items").append(`<div class="card"><h3>${item}</h3><img src=${imgurl} alt="a photo of an item"></div>`);
+  });
+}
