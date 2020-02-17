@@ -2,9 +2,9 @@
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles.css';
+// import './styles.css';
 import { TrailService } from './trail-service.js';
-import { GeoService, arraySort } from './geo-service.js';
+import { GeoService } from './geo-service.js';
 
 $(document).ready(function() {
   const trailService = new TrailService();
@@ -37,10 +37,10 @@ $(document).ready(function() {
     const getElements = function(response) {
       const trailsArray = response.trails;
       if (trailsArray) {
+        trailsArray.sort(function(a, b) {
+          return a.id - b.id;
+        });
         console.log(trailsArray);
-        trailsArray.sort(arraySort);
-        console.log(trailsArray.sort(arraySort));
-        // displayInfo(trailsArray);
       } else {
         $("#outputResults").append("There was an error with your request. Please double-check your entries.");
       }
