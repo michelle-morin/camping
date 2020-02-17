@@ -1,3 +1,31 @@
 #add-items {
   display: none;
 }
+
+#left-campers .card, #right-campers .card {
+  height: 300px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 60%;
+  height: auto;
+  pointer-events: none;
+}
+
+#added-items {
+  border: 2px solid #111111;
+  height: 800px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#added-items .card, #left-campers .card .card, #right-campers .card .card {
+  margin-left: 4%;
+}
