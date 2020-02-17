@@ -1,3 +1,5 @@
+import $ from 'jQuery';
+
 export function initializePage() {
   $("form#initialize-trip").submit(function(event) {
     event.preventDefault();
@@ -15,9 +17,9 @@ export function initializePage() {
 }
 
 export function addCamper() {
+  let counter = 1;
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
-    let counter = 1;
     let camper = $("input#camper").val();
     // Add any necessary clases for drag/drop into the append statement
     if (counter %2 === 0) {
@@ -32,17 +34,17 @@ export function addCamper() {
 export function addKnownItem() {
   $("form#add-known-item").submit(function(event) {
     event.preventDefault();
-    let item = $("#known-item").val();
-    let imgurl = `../img/${item}.jpeg`; // Requires figuring out local images.
-    $("#added-items").append(`<div class="card"><h3>${item}</h3><img src=${imgurl} alt="a photo of an item"></div>`);
+    let knownItem = $("#known-item").val();
+    let knownImgUrl = `../img/${knownItem}.jpeg`; // Requires figuring out local images.
+    $("#added-items").append(`<div class="card"><h3>${knownItem}</h3><img src=${knownImgUrl} alt="a photo of an item"></div>`);
   });
 }
 
 export function addOtherItem() {
   $("form#add-other-item").submit(function(event) {
     event.preventDefault();
-    let item = $("#other-item").val();
-    let imgurl = `../img/default.jpeg`; // requires a default img
-    $("#added-items").append(`<div class="card"><h3>${item}</h3><img src=${imgurl} alt="a photo of an item"></div>`);
+    let otherItem = $("input#other-item").val();
+    let otherImgUrl = `../img/default.jpeg`; // requires a default img
+    $("#added-items").append(`<div class="card"><h3>${otherItem}</h3><img src=${otherImgUrl} alt="a photo of an item"></div>`);
   });
 }
