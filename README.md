@@ -12,6 +12,7 @@ _This application ..._
 
 | Specification | Example Input | Example Output |
 | ------------- |:-------------:| -------------------:|
+| Webpage allows a user to add other users to a camping trip attendee list | "Matt", "Michelle", "Patrick", "Alex", "Joe" | Webpage forms separate dropzone areas for each attendee |
 
 
 ## Setup/Installation Requirements
