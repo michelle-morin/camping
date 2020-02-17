@@ -5,12 +5,13 @@ export function initializePage() {
     event.preventDefault();
     const location = $("input#location").val();
     const tripOrganizer = $("input#organizer").val();
-    const tripDate = $("#date").val();
+    const startDate = $("#start-date").val();
+    const endDate = $("#end-date").val();
     // Add UI logic for APIs that use location.
     // Add any necessary clases for drag/drop into the append statement
     $("#left-campers").append(`<div class="card"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
-    $("h3#date").html(`${tripDate}`);
+    $("h3#trip-date").html(`${startDate}-${endDate}`);
     $("#splash-screen").hide();
     $("#add-items").show();
   });
@@ -35,8 +36,8 @@ export function addKnownItem() {
   $("form#add-known-item").submit(function(event) {
     event.preventDefault();
     let knownItem = $("#known-item").val();
-    let knownImgUrl = `../img/${knownItem}.jpeg`; // Requires figuring out local images.
-    $("#added-items").append(`<div class="card"><h3>${knownItem}</h3><img src=${knownImgUrl} alt="a photo of an item"></div>`);
+    let knownImgUrl = `./assets/images/${knownItem}.png`; // Requires figuring out local images.
+    $("#added-items").append(`<div class="card"><h3>${knownItem}</h3><img src="${knownImgUrl}" alt="a photo of an item"></div>`);
   });
 }
 
