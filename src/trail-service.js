@@ -13,3 +13,17 @@ export class TrailService {
     }
   }
 }
+
+export function arraySort(a, b) {
+  console.log(a + " " + b);
+  const trailA = a.id;
+  const trailB = b.id;
+
+  let comparison = 0;
+  if (trailA > trailB) {
+    comparison = 1;
+  } else if (trailA < trailB) {
+    comparison = -1;
+  }
+  return comparison;
+}
