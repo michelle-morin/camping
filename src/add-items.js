@@ -4,6 +4,8 @@ export function initializePage() {
     const location = $("input#location").val();
     const tripOrganizer = $("input#organizer").val();
     const tripDate = $("#date").val();
+    // Add UI logic for APIs that use location.
+    // Add any necessary clases for drag/drop into the append statement
     $("#left-campers").append(`<div class="card"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#date").html(`${tripDate}`);
@@ -13,5 +15,17 @@ export function initializePage() {
 }
 
 export function addCamper() {
-  
+  $("form#add-camper").submit(function(event) {
+    event.preventDefault();
+    let counter = 1;
+    let camper = $("input#camper").val();
+    // Add any necessary clases for drag/drop into the append statement
+    if (counter %2 === 0) {
+      $("#left-campers").append(`<div class="card"><h3>${camper}</h3></div>`);
+    } else {
+      $("#right-campers").append(`<div class="card"><h3>${camper}</h3></div>`);
+    }
+    counter += 1;
+  });
 }
+
