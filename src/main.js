@@ -9,19 +9,21 @@ $(document).ready(function() {
   const trailService = new TrailService();
   const geoService = new GeoService();
 
-  $(".searchButton").click(function(event) {
+  $('.searchButton').click(function(event) {
     event.preventDefault();
+    $('#outputResults').empty();
+    const searchLocation = $('#searchLocation').val();
+    console.log(searchLocation);
+    $('#searchLocation').val("");
 
     (async () => {
-      let response = await trailService.getTrailInfoByLoc();
-      getElements(response);
-    })();
-
-    (async () => {
-      let response = await geoService.getGeoByInput();
-      console.log(response.results[0].geometry.lat);
-      console.log(response.results[0].geometry.lng);
-      // getElements(response);
+      let geoResponse = await geoService.getGeoByInput(searchLocation);
+      let lat = geoResponse.results[0].geometry.lat;
+      let lng = geoResponse.results[0].geometry.lng;
+      (async () => {
+        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng);
+        getElements(trailResponse);
+      })();
     })();
 
     const getElements = function(response) {
