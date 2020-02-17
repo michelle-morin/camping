@@ -22,7 +22,7 @@ export function initializePage() {
     const endDate = $("#end-date").val();
     // Add UI logic for APIs that use location.
     // Add any necessary clases for drag/drop into the append statement
-    $("#left-campers").append(`<div class="card"><h3>${tripOrganizer}</h3></div>`);
+    $("#left-campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${startDate}-${endDate}`);
     $("#splash-screen").hide();
@@ -37,27 +37,33 @@ export function addCamper() {
     let camper = $("input#camper").val();
     // Add any necessary clases for drag/drop into the append statement
     if (counter %2 === 0) {
-      $("#left-campers").append(`<div ondrop="onDrop(event)" ondragenter="return onDragEnter(event)" ondragover="return onDragOver(event)" class="card"><h3>${camper}</h3></div>`);
+      $("#left-campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${camper}</h3></div>`);
     } else {
-      $("#right-campers").append(`<div ondrop="onDrop(event)" ondragenter="return onDragEnter(event)" ondragover="return onDragOver(event)" class="card"><h3>${camper}</h3></div>`);
+      $("#right-campers").append(`<div ondrop="onDrop(event);" ondragover="onDragOver(event);" class="card"><h3>${camper}</h3></div>`);
     }
     counter += 1;
   });
 }
 
 export function addKnownItem() {
+  let knownItemNumber = 0;
   $("form#add-known-item").submit(function(event) {
     event.preventDefault();
+    knownItemNumber += 1;
     let knownItem = $("#known-item").val();
     let knownImgUrl = `assets/images/${knownItem}.png`;
-    $("#added-items").append(`<div ondragstart="return onDragStart(event)" class="card"><h3>${knownItem}</h3><img src="${knownImgUrl}" alt="a photo of an item"></div>`);
+    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="card"><h3>${knownItem}</h3><img src='${knownImgUrl}' alt="a photo of an item"></div>`);
   });
 }
 
 export function addOtherItem() {
+  let otherItemNumber = 0;
   $("form#add-other-item").submit(function(event) {
     event.preventDefault();
+    otherItemNumber += 1;
+    let defaultImgUrl = 'assets/images/default.png';
     let otherItem = $("input#other-item").val();
-    $("#added-items").append(`<div ondragstart="return onDragStart(event)" class="card"><h3>${otherItem}</h3><img src="assets/images/default.png" alt="a photo of an item"></div>`);
+    $("input#other-item").val("");
+    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="card"><h3>${otherItem}</h3><img src='${defaultImgUrl}' alt='a photo of an item'></div>`);
   });
 }
