@@ -32,7 +32,6 @@ export function apiCalls(location) {
 
   (async () => {
     let geoResponse = await geoService.getGeoByInput(location);
-    console.log(geoResponse);
     let lat = geoResponse.results[0].geometry.lat;
     let lng = geoResponse.results[0].geometry.lng;
     let sunrise = geoResponse.results[0].annotations.sun.rise.apparent + geoResponse.results[0].annotations.timezone.offset_sec;
@@ -41,7 +40,6 @@ export function apiCalls(location) {
     //Weather Info
     (async () => {
       let weatherResponse = await weatherService.getWeatherByLoc(lat, lng, sunrise, sunset);
-      console.log(weatherResponse);
       getWeather(weatherResponse, sunrise, sunset);
     })();
     
@@ -81,7 +79,6 @@ export function apiCalls(location) {
 const getTime = function(unicode) {
   let suntime = new Date(unicode *1000);
   let utcString = suntime.toUTCString();
-  console.log(utcString);
   let time = utcString.slice(-12, -4);
   return time;
 };
