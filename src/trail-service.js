@@ -12,4 +12,19 @@ export class TrailService {
       return false;
     }
   }
+
+  async getTrailByID(id) {
+    try {
+      let idResponse = await fetch (`
+      https://www.hikingproject.com/data/get-trails-by-id?ids=${id}&key=${process.env.API_KEY}`);
+      if (idResponse.status === 200 && idResponse.ok) {
+        let idJsonifiedResponse = await idResponse.json();
+        return idJsonifiedResponse;
+      } else {
+        return false;
+      }
+    } catch(error) {
+      return false;
+    }
+  }
 }
