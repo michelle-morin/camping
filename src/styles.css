@@ -124,9 +124,17 @@ input.form-control, input.form-control:focus, input.form-control:active {
   text-align: center;
 }
 
+#campers .box {
+  max-height: 100px;
+  max-width: 100px;
+  height: 100px;
+  width: 100px;
+  border: 2px solid #111111;
+}
+
 #added-items {
   border: 2px solid #111111;
-  max-height: 1000px;
+  height: 1000px;
   overflow-y: auto;
   display: flex;
   justify-content: center;
@@ -134,14 +142,17 @@ input.form-control, input.form-control:focus, input.form-control:active {
   flex-wrap: wrap;
 }
 
-#added-items .card {
+#added-items .box {
   height: 100px;
   width: 100px;
+  max-height: 100px;
+  max-width: 100px;
+  border: 2px solid #111111;
   justify-content: center;
 }
 
 img {
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 50%;
   pointer-events: none;
 }
