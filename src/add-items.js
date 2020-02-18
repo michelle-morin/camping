@@ -40,7 +40,6 @@ export function initializePage() {
           $("#more-info ul").append(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li><li>${summary}</li>`)
         }
       })();
-
     });
     const trailService = new TrailService();
     const geoService = new GeoService();
@@ -73,9 +72,7 @@ export function initializePage() {
         $("#trail-info").append("There was an error with your request. Please double-check your entries.");
       }
     };
-
-    // Add any necessary clases for drag/drop into the append statement
-    $("#campers").append(`<div id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card parent"><h3>${tripOrganizer}</h3></div>`);
+    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${startDate}-${endDate}`);
     $("#splash-screen").hide();
@@ -88,7 +85,7 @@ export function addCamper() {
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
     let inputCamper = $("input#camper").val();
-    $("#campers").append(`<div id="camper${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card parent"><h3>${inputCamper}</h3></div>`);
+    $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="camper${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
   });
 }
 
@@ -99,7 +96,7 @@ export function addKnownItem() {
     knownItemNumber += 1;
     let knownItem = $("#known-item").val();
     let knownImgUrl = `assets/images/${knownItem}.png`;
-    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h3>${knownItem}</h3><img src='${knownImgUrl}' alt="a photo of an item"></div>`);
+    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h5>${knownItem}</h5><center><img src='${knownImgUrl}' alt="a photo of an item"></center></div>`);
   });
 }
 
@@ -111,6 +108,6 @@ export function addOtherItem() {
     let defaultImgUrl = 'assets/images/default.png';
     let otherItem = $("input#other-item").val();
     $("input#other-item").val("");
-    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h3>${otherItem}</h3><img src='${defaultImgUrl}' alt='a photo of an item'></div>`);
+    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h5>${otherItem}</h5><center><img src='${defaultImgUrl}' alt='a photo of an item'></center></div>`);
   });
 }
