@@ -83,18 +83,9 @@ input.form-control, input.form-control:focus, input.form-control:active {
 }
 
 /* Styles for "add-items" main screen */
-.trees { 
-  background-image: url(assets/images/redwoods.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #111111;
-}
-
 #add-items .jumbotron {
   margin-top: 2%;
-  background-color: transparent;
+  background-color: #eeeeee75;
   border: 2px solid #f5f5f5;
 }
 
@@ -112,7 +103,7 @@ input.form-control, input.form-control:focus, input.form-control:active {
 }
 
 #campers .card {
-  background-color: transparent;
+  background-color: #eeeeee75;
   border: 2px solid #111111;
   border-radius: 20px;
   margin: 1%;
@@ -146,6 +137,7 @@ input.form-control, input.form-control:focus, input.form-control:active {
 #added-items {
   margin-top: 8%;
   border: 2px solid #111111;
+  background-color: #eeeeee75;
   border-radius: 20px;
   min-height: 350px;
   overflow-y: auto;
@@ -178,4 +170,14 @@ img {
   border: 2px solid #111111;
   border-radius: 20px;
   margin-top: 2%;
+  background-color: #eeeeee75;
+}
+
+#trail-info li {
+  cursor: pointer;
+}
+
+button#save-trip {
+  border: 2px solid #111111;
+  width: 100%;
 }
