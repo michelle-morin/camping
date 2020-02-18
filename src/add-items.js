@@ -34,12 +34,15 @@ export function initializePage() {
         } else if (currentTrailResponse.trails.length > 0) {
           $("#more-info h3").html(`${currentTrailResponse.trails[0].name}`);
           let summary;
-          if (currentTrailResponse.trails[0].summary === "Needs Adoption") {
+          if (currentTrailResponse.trails[0].summary === "Needs Adoption" || currentTrailResponse.trails[0].summary === "Needs Summary") {
             summary = "unavailable";
           } else {
             summary = currentTrailResponse.trails[0].summary;
           }
-          $("#more-info ul").html(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li><li>${summary}</li>`)
+          $("#more-info ul").html(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li>`);
+          if (summary != "unavailable") {
+            $("#more-info ul").append(`<li>Summary: ${summary}</li>`);
+          }
         }
       })();
     });
