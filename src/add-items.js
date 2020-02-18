@@ -1,5 +1,4 @@
-import { TrailService } from './trail-service.js';
-import { GeoService } from './geo-service.js';
+import { apiCalls } from './api-calls.js';
 import $ from 'jQuery';
 import './assets/images/tent.png';
 import './assets/images/firewood.png';
@@ -23,61 +22,10 @@ export function initializePage() {
     const startDate = $("#start-date").val();
     const endDate = $("#end-date").val();
 
-    $("#trail-info").on('click', 'li', function() {
-      let currentTrail= $(this).val();
-      (async () => {
-        let currentTrailResponse = await trailService.getTrailByID(currentTrail);
-        if (currentTrailResponse === false) {
-          $("#more-info h3").html("Whoops, there was an error displaying more information about this trail.");
-        } else if (currentTrailResponse.trails.length === 0) {
-          $("#more-info h3").html("Whoops, there was an error displaying more information about this trail.");
-        } else if (currentTrailResponse.trails.length > 0) {
-          $("#more-info h3").html(`${currentTrailResponse.trails[0].name}`);
-          let summary;
-          if (currentTrailResponse.trails[0].summary === "Needs Adoption") {
-            summary = "unavailable";
-          } else {
-            summary = currentTrailResponse.trails[0].summary;
-          }
-          $("#more-info ul").append(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li><li>${summary}</li>`)
-        }
-      })();
-    });
-    const trailService = new TrailService();
-    const geoService = new GeoService();
-    (async () => {
-      let geoResponse = await geoService.getGeoByInput(location);
-      let lat = geoResponse.results[0].geometry.lat;
-      let lng = geoResponse.results[0].geometry.lng;
-      (async () => {
-        let radius = 10;
-        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
-        if (trailResponse === false) {
-          $("#trail-info h3").html("There was an error retrieving trail information.");
-        } else if (trailResponse.trails.length === 0) {
-          radius += 50;
-          let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
-          getElements(trailResponse);
-        } else {
-          getElements(trailResponse);
-        }
-      })();
-    })();
-    const getElements = function(response) {
-      const trailsArray = response.trails;
-      if (trailsArray) {
-        $("#trails-info h3").html("Nearby trails:");
-        trailsArray.sort(function(a, b) {
-          return b.stars - a.stars;
-        });
-        for (let i=0; i<10; i++) {
-          $("#trail-info ul").append(`<li value="${trailsArray[i].id}">${trailsArray[i].name}, ${trailsArray[i].length} miles</li>`);
-        }
-      } else {
-        $("#trail-info h3").append("There was an error with your request. Please double-check your entries.");
-      }
-    };
-    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+    apiCalls(location);
+
+    // Add any necessary clases for drag/drop into the append statement
+    $("#campers").append(`<div id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card parent"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${startDate}-${endDate}`);
     $("#splash-screen").hide();
