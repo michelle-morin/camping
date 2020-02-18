@@ -82,7 +82,7 @@ const getTime = function(unicode) {
   let suntime = new Date(unicode *1000);
   let utcString = suntime.toUTCString();
   console.log(utcString);
-  let time = utcString.slice(-11, -4);
+  let time = utcString.slice(-12, -4);
   return time;
 };
 
