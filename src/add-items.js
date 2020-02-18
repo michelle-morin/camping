@@ -22,7 +22,7 @@ export function initializePage() {
     const endDate = $("#end-date").val();
     // Add UI logic for APIs that use location.
     // Add any necessary clases for drag/drop into the append statement
-    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${tripOrganizer}</h3></div>`);
+    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card parent"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${startDate}-${endDate}`);
     $("#splash-screen").hide();
@@ -34,7 +34,7 @@ export function addCamper() {
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
     let inputCamper = $("input#camper").val();
-    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${inputCamper}</h3></div>`);
+    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card parent"><h3>${inputCamper}</h3></div>`);
   });
 }
 
