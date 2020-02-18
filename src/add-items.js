@@ -31,17 +31,10 @@ export function initializePage() {
 }
 
 export function addCamper() {
-  let counter = 1;
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
-    let camper = $("input#camper").val();
-    // Add any necessary clases for drag/drop into the append statement
-    if (counter %2 === 0) {
-      $("#left-campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${camper}</h3></div>`);
-    } else {
-      $("#right-campers").append(`<div ondrop="onDrop(event);" ondragover="onDragOver(event);" class="card"><h3>${camper}</h3></div>`);
-    }
-    counter += 1;
+    let inputCamper = $("input#camper").val();
+    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${inputCamper}</h3></div>`);
   });
 }
 
