@@ -12,16 +12,17 @@ _This application ..._
 
 | Specification | Example Input | Example Output |
 | ------------- |:-------------:| -------------------:|
-| Webpage allows trip organizer to input date, location, and thier name | "Patrick", "Feb. 20, 2020", "Tom, Dick, and Harry" | starts new trip page with trip organizer's name in a card, and date and location in title bar. |
+| Webpage allows trip organizer to input date, location, and their name | "Patrick", "Feb. 20, 2020", "Tom, Dick, and Harry" | starts new trip page with trip organizer's name in a card, and date and location in title bar. |
 | Webpage allows a user to add other users to a camping trip attendee list | "Matt", "Michelle", "Patrick", "Alex", "Joe" | Webpage forms separate dropzone areas for each attendee |
 | Webpage allows users to add known items to packing list from drop-down menu | user selects "firewood" | firewood item is appended to their packing list area |
-| Webpage allows users to add custom items to packing list from a text box | user enters "harpoon gun" | "harpoon gun" added to packing list area |
+| Webpage allows users to add custom items to packing list from a text box | user enters "harpoon gun" in a textbox | "harpoon gun" added to packing list area |
 | Webpage allows users to drag and drop items in the packing list area to thier own personal lists | Patrick moves "harpoon gun" to card named "Patrick" | "Harpoon gun" displayed under Patrick's list |
-| Webpage displays weather for input location in title bar | "Bend, OR" | weather for Bend, OR in title bar |
-| Webpage determines list of trails nearby user's input location and displays them in a side panel | "Portland, OR" | wildwood trail, etc. |
-| Webpage displays error message in sidebar if API call for nearby trails fails | 400-level response status | "There was an error retreiving nearby trails." |
-| Webpage alerts user in sidebar if there are no results for nearby trails | "John Day, OR" | "There are no trails within 50mi of John Day, OR" |
-| Webpage displays list of trails in order of most popular to least popular | user enters location for trip | most popular to least popular nearby trails are displayed in side panel |
+<!-- | Webpage displays weather for input location in title bar | "Bend, OR" | weather for Bend, OR in title bar | -->
+| Webpage determines list of trails nearby user's input location | "Portland, OR" | wildwood trail, etc. |
+| Webpage displays error message if API call for nearby trails fails | 400-level response status | "There was an error retreiving nearby trails." |
+| Webpage alerts user if there are no results for nearby trails | "John Day, OR" | "There are no trails within 50mi of John Day, OR" |
+| Webpage displays list of trails in order of most popular to least popular | user enters location for trip | most popular to least popular nearby trails are displayed |
+| Webpage allows user to click on any trail and displays more details about the clicked trail | user clicks "wildwood trail" | webpage displays difficulty, ascent, descent, etc. |
 
 Stretch goals:
 * figure out local storage option so that the list is available after browser is closed
@@ -54,6 +55,10 @@ _Clone this repository via Terminal using the following commands:_
 * ``$ cd doctor``
 
 _Confirm that you have navigated to the camping directory (e.g., by entering the command_ ``pwd`` _in Terminal). Next, add a file named .env to project root directory (e.g., by entering the command_ ``touch .env`` _in Terminal)._
+* _Make an API key for the [Hiking Project Data API](https://www.hikingproject.com/data) by navigating to the linked website and clicking "sign up of login to get an API Key"_
+* _Store your API key for the Hiking Project API in first line of the .env file in the following format: API_KEY = {replace curly braces and this text with your API key}_
+* _Make an API key for the [OpenCage Geocoding API](https://opencagedata.com/api) by navigating to the linked website and selecting "sign up for your free API key" under QuickStart._
+* _Store your API key for the OpenCage Geocoding API in second line of the .env file in the following format: GEO_API_KEY = {replace curly braces and this text with your API key}_
 
 _Next, install node package manager (npm) at the project's root directory via the following command:_
 * ``$ npm install``
@@ -71,6 +76,8 @@ _To view/edit the source code of this application, open the contents of the camp
 * _jQuery_ 
 * _npm_ 
 * _Webpack_ 
+* _[Hiking Project Data API](https://www.hikingproject.com/data)_
+* _[OpenCage Geocoding API](https://opencagedata.com/api)_
 
 ### License
 
