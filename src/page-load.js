@@ -38,7 +38,7 @@ $(document).ready(function() {
       const trailsArray = response.trails;
       if (trailsArray) {
         trailsArray.sort(function(a, b) {
-          return a.id - b.id;
+          return b.stars - a.stars;
         });
         console.log(trailsArray);
       } else {
