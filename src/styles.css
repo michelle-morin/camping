@@ -138,6 +138,9 @@ input.form-control, input.form-control:focus, input.form-control:active {
   width: 100px;
   border: 2px solid #111111;
   margin: 1%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 #added-items {
@@ -159,7 +162,9 @@ input.form-control, input.form-control:focus, input.form-control:active {
   max-width: 100px;
   border: 2px solid #111111;
   margin: 1%;
-  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 img {
