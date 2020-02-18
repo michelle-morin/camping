@@ -1,5 +1,107 @@
+/* Initially hidden elements */
 #add-items {
   display: none;
+}
+
+/* Styles for splash-screen */
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-image: url(assets/images/yosemite.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #111111;
+  font-family: 'Heebo', sans-serif;
+}
+
+#splash-screen .jumbotron {
+  margin-top: 4%;
+  background-color: transparent;
+  border: 2px solid #f5f5f5;
+  color: #f5f5f5;
+}
+
+#splash-screen .jumbotron h1 {
+  /* font-family: 'Amatic SC', cursive; */
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 5em;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: -2%;
+  margin-bottom: -2%;
+  /* -webkit-text-stroke-width: 0.25px; */
+  -webkit-text-stroke-width: 1.75px;
+  -webkit-text-stroke-color: #111111;
+}
+
+form#initialize-trip {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  border: 2px solid #f5f5f5;
+  background-color: transparent;
+}
+
+form#initialize-trip h4 {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 2em;
+  color: #f5f5f5;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #111111;
+  margin-top: 2%;
+}
+
+form#initialize-trip button.btn {
+  margin-top: 2%;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 1.5em;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #111111;
+  border: 2px solid #f5f5f5;
+  color: #f5f5f5;
+}
+
+form#initialize-trip button.btn:hover {
+  margin-top: 2%;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  background-color: #07250e;
+  border: none;
+  color: #f5f5f5;
+}
+
+input.form-control, input.form-control:focus, input.form-control:active {
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  color: #f5f5f5;
+}
+
+/* Styles for "add-items" main screen */
+.trees { 
+  background-image: url(assets/images/redwoods.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #111111;
+}
+
+#add-items .jumbotron {
+  margin-top: 2%;
+  background-color: transparent;
+  border: 2px solid #f5f5f5;
+}
+
+#add-items .jumbotron h3 {
+  font-weight: bolder;
+  color: #111111;
+  text-align: center;
 }
 
 #left-campers .card, #right-campers .card {
