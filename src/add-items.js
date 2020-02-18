@@ -22,7 +22,7 @@ export function initializePage() {
     const endDate = $("#end-date").val();
     // Add UI logic for APIs that use location.
     // Add any necessary clases for drag/drop into the append statement
-    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${tripOrganizer}</h3></div>`);
+    $("#campers").append(`<div id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${startDate}-${endDate}`);
     $("#splash-screen").hide();
@@ -31,10 +31,12 @@ export function initializePage() {
 }
 
 export function addCamper() {
+  let counter = 2;
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
     let inputCamper = $("input#camper").val();
-    $("#campers").append(`<div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${inputCamper}</h3></div>`);
+    $("#campers").append(`<div id="camper${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${inputCamper}</h3></div>`);
+    counter += 1;
   });
 }
 
@@ -45,7 +47,7 @@ export function addKnownItem() {
     knownItemNumber += 1;
     let knownItem = $("#known-item").val();
     let knownImgUrl = `assets/images/${knownItem}.png`;
-    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="card"><h3>${knownItem}</h3><img src='${knownImgUrl}' alt="a photo of an item"></div>`);
+    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h3>${knownItem}</h3><img src='${knownImgUrl}' alt="a photo of an item"></div>`);
   });
 }
 
@@ -57,6 +59,6 @@ export function addOtherItem() {
     let defaultImgUrl = 'assets/images/default.png';
     let otherItem = $("input#other-item").val();
     $("input#other-item").val("");
-    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="card"><h3>${otherItem}</h3><img src='${defaultImgUrl}' alt='a photo of an item'></div>`);
+    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h3>${otherItem}</h3><img src='${defaultImgUrl}' alt='a photo of an item'></div>`);
   });
 }
