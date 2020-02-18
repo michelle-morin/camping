@@ -1,3 +1,5 @@
+import { TrailService } from './trail-service.js';
+import { GeoService } from './geo-service.js';
 import $ from 'jQuery';
 import './assets/images/tent.png';
 import './assets/images/firewood.png';
@@ -20,7 +22,39 @@ export function initializePage() {
     const tripOrganizer = $("input#organizer").val();
     const startDate = $("#start-date").val();
     const endDate = $("#end-date").val();
+
     // Add UI logic for APIs that use location.
+    const trailService = new TrailService();
+    const geoService = new GeoService();
+    (async () => {
+      let geoResponse = await geoService.getGeoByInput(location);
+      let lat = geoResponse.results[0].geometry.lat;
+      let lng = geoResponse.results[0].geometry.lng;
+      (async () => {
+        let radius = 10;
+        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+        if (trailResponse.trails.length === 0) {
+          console.log("Larger radius");
+          let radius = 50;
+          let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+          getElements(trailResponse);
+        } else {
+          getElements(trailResponse);
+        }
+      })();
+    })();
+    const getElements = function(response) {
+      const trailsArray = response.trails;
+      if (trailsArray) {
+        trailsArray.sort(function(a, b) {
+          return b.stars - a.stars;
+        });
+        console.log(trailsArray);
+      } else {
+        $("#outputResults").append("There was an error with your request. Please double-check your entries.");
+      }
+    };
+
     // Add any necessary clases for drag/drop into the append statement
     $("#campers").append(`<div id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card"><h3>${tripOrganizer}</h3></div>`);
     $("h3#trip-location").html(`${location}`);
