@@ -96,7 +96,7 @@ export function addKnownItem() {
     knownItemNumber += 1;
     let knownItem = $("#known-item").val();
     let knownImgUrl = `assets/images/${knownItem}.png`;
-    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h5>${knownItem}</h5><center><img src='${knownImgUrl}' alt="a photo of an item"></center></div>`);
+    $("#added-items").append(`<div id="knownItem${knownItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box" style="background-image: url(${knownImgUrl});"></div>`);
   });
 }
 
@@ -108,6 +108,6 @@ export function addOtherItem() {
     let defaultImgUrl = 'assets/images/default.png';
     let otherItem = $("input#other-item").val();
     $("input#other-item").val("");
-    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box"><h5>${otherItem}</h5><center><img src='${defaultImgUrl}' alt='a photo of an item'></center></div>`);
+    $("#added-items").append(`<div id="otherItem${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box" style="background-image: url(${defaultImgUrl});"><h5>${otherItem}</h5></div>`);
   });
 }
