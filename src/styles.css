@@ -83,15 +83,6 @@ input.form-control, input.form-control:focus, input.form-control:active {
 }
 
 /* Styles for "add-items" main screen */
-.trees { 
-  background-image: url(assets/images/redwoods.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #111111;
-}
-
 #add-items .jumbotron {
   margin-top: 2%;
   background-color: #eeeeee75;
@@ -184,4 +175,9 @@ img {
 
 #trail-info li {
   cursor: pointer;
+}
+
+button#save-trip {
+  border: 2px solid #111111;
+  width: 100%;
 }
