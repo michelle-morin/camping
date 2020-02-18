@@ -27,15 +27,15 @@ body {
 }
 
 #splash-screen .jumbotron h1 {
-  /* font-family: 'Amatic SC', cursive; */
-  font-family: 'Alegreya Sans SC', sans-serif;
+  font-family: 'Amatic SC', cursive;
+  /* font-family: 'Alegreya Sans SC', sans-serif; */
   font-size: 5em;
   font-weight: bolder;
   text-align: center;
   margin-top: -2%;
   margin-bottom: -2%;
-  /* -webkit-text-stroke-width: 0.25px; */
-  -webkit-text-stroke-width: 1.75px;
+  -webkit-text-stroke-width: 0.25px;
+  /* -webkit-text-stroke-width: 1.75px; */
   -webkit-text-stroke-color: #111111;
 }
 
@@ -112,16 +112,22 @@ input.form-control, input.form-control:focus, input.form-control:active {
 }
 
 #campers .card {
+  background-color: transparent;
+  border: 2px solid #111111;
+  border-radius: 20px;
+  margin: 1%;
+}
+
+#campers .card .card-body {
   height: 300px;
-  width: 100%;
+  width: 90%;
   margin: 1%;
   overflow-y: auto;
   display: flex;
-  /* justify-content: center; */
   flex-wrap: wrap;
 }
 
-#campers .card h3 {
+#campers .card .card-header {
   text-align: center;
 }
 
@@ -131,11 +137,17 @@ input.form-control, input.form-control:focus, input.form-control:active {
   height: 100px;
   width: 100px;
   border: 2px solid #111111;
+  margin: 1%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 #added-items {
+  margin-top: 8%;
   border: 2px solid #111111;
-  height: 1000px;
+  border-radius: 20px;
+  min-height: 350px;
   overflow-y: auto;
   display: flex;
   justify-content: center;
@@ -149,11 +161,21 @@ input.form-control, input.form-control:focus, input.form-control:active {
   max-height: 100px;
   max-width: 100px;
   border: 2px solid #111111;
-  justify-content: center;
+  margin: 1%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 img {
-  width: 50%;
-  height: 50%;
+  object-fit: contain;
+  max-width: 75px;
+  max-height: 75px;
   pointer-events: none;
+}
+
+#trails {
+  border: 2px solid #111111;
+  border-radius: 20px;
+  margin-top: 2%;
 }

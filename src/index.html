@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Heebo:500&display=swap" rel="stylesheet">
   <title>Camping Trip Planner</title>
@@ -14,17 +14,17 @@
       </div>
       <form id="initialize-trip" class="card">
         <h4>Where are you going?</h4>
-        <input type="text" class="form-control" id="location" placeholder="" required>
+        <input value="bend, or" type="text" class="form-control" id="location" placeholder="" required>
         <h4>Enter your name:</h4>
-        <input type="text" class="form-control" id="organizer" required>
+        <input value="placeholder" type="text" class="form-control" id="organizer" required>
         <div class="row">
           <div class="col-md-6">
             <h4>When does the trip start?</h4>
-            <input type="date" class="form-control" id="start-date" required>
+            <input type="date" class="form-control" id="start-date">
           </div>
           <div class="col-md-6">
             <h4>When does the trip end?</h4>
-            <input type="date" class="form-control" id="end-date" required>
+            <input type="date" class="form-control" id="end-date">
           </div>
         </div>
         <button type="submit" class="btn btn-block">Start planning!</button>
@@ -44,18 +44,20 @@
         <div class="col-md-5">
           <form id="add-camper" class="row">
             <label for="camper">Camper's name:</label>
-            <input type="text" class="form-control" id="camper" required>
+            <input type="text" class="form" id="camper" required>
             <button type="submit" class="btn">Add camper</button>
           </form>
-          <div class="row" id="campers">
+          <div class="row">
             <h3>Campers:</h3>
+          </div>
+          <div id="campers">
           </div>
         </div>
         <div class="col-md-7">
           <div class="row">
             <form id="add-known-item">
               <label for="item">Add shared items:</label>
-              <select class="form-control" id="known-item">
+              <select class="form" id="known-item">
                 <option value="tent">tent</option>
                 <option value="firewood">firewood</option>
                 <option value="cooler">cooler</option>
@@ -69,19 +71,16 @@
                 <option value="cards">cards</option>
                 <option value="chair">camp chair</option>
               </select>
-              <button class="btn btn-block" type="submit">Add!</button>
+              <button class="btn" type="submit">Add!</button>
             </form>
-          </div>
-          <div class="row">
             <form id="add-other-item">
-              <label for="other-item">Add your own items:</label>
-              <input type="text" class="form-control" name="other-item" id="other-item" required>
-              <button class="btn btn-block" type="submit">Add!</button>
+              <input type="text" class="form" name="other-item" id="other-item" required>
+              <button class="btn" type="submit">Add!</button>
             </form>
           </div>
           <div class="row parent" ondragover="onDragOver(event);" ondrop="onDrop(event);" id="added-items">
           </div>
-          <div class="row">
+          <div class="row" id="trails">
             <div id="trail-info" class="col-md-6">
               <h3>Nearby trails:</h3>
               <ul>
