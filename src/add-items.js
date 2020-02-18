@@ -27,8 +27,10 @@ export function initializePage() {
       let currentTrail= $(this).val();
       (async () => {
         let currentTrailResponse = await trailService.getTrailByID(currentTrail);
-        if (currentTrailResponse.trails.length === 0) {
-          $("#more-info h3").html("Whoops, there was an error displaying more information about this trail.")
+        if (currentTrailResponse === false) {
+          $("#more-info h3").html("Whoops, there was an error displaying more information about this trail.");
+        } else if (currentTrailResponse.trails.length === 0) {
+          $("#more-info h3").html("Whoops, there was an error displaying more information about this trail.");
         } else if (currentTrailResponse.trails.length > 0) {
           $("#more-info h3").html(`${currentTrailResponse.trails[0].name}`);
           let summary;
@@ -50,7 +52,9 @@ export function initializePage() {
       (async () => {
         let radius = 10;
         let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
-        if (trailResponse.trails.length === 0) {
+        if (trailResponse === false) {
+          $("#trail-info h3").html("There was an error retrieving trail information.");
+        } else if (trailResponse.trails.length === 0) {
           radius += 50;
           let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
           getElements(trailResponse);
@@ -62,6 +66,7 @@ export function initializePage() {
     const getElements = function(response) {
       const trailsArray = response.trails;
       if (trailsArray) {
+        $("#trails-info h3").html("Nearby trails:");
         trailsArray.sort(function(a, b) {
           return b.stars - a.stars;
         });
@@ -69,7 +74,7 @@ export function initializePage() {
           $("#trail-info ul").append(`<li value="${trailsArray[i].id}">${trailsArray[i].name}, ${trailsArray[i].length} miles</li>`);
         }
       } else {
-        $("#trail-info").append("There was an error with your request. Please double-check your entries.");
+        $("#trail-info h3").append("There was an error with your request. Please double-check your entries.");
       }
     };
     $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
