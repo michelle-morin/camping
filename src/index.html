@@ -47,7 +47,7 @@
             <input type="text" class="form-control" id="camper" required>
             <button type="submit" class="btn">Add camper</button>
           </form>
-          <div class="parent row" id="campers">
+          <div class="row" id="campers">
             <h3>Campers:</h3>
           </div>
         </div>
@@ -97,19 +97,16 @@
 
     function onDragOver(event) {
       event.preventDefault();
+      event.stopPropagation();
     }
 
     function onDrop(event) {
-      const id = event
-        .dataTransfer
-        .getData('text');
+      const id = event.dataTransfer.getData('text');
       const draggableElement = document.getElementById(id);
-      const dropzone = event.target;
-      dropzone.appendChild(draggableElement);
-      console.log(draggableElement);
-      event
-        .dataTransfer
-        .clearData();
+      const dropzone = event.currentTarget;
+      if (dropzone.classList.contains("parent")){
+        dropzone.appendChild(draggableElement);
+      }
     }
   </script>
 </body>
