@@ -1,7 +1,7 @@
 export class WeatherService {
-  async getWeatherByLoc(lat, lng) {
+  async getWeatherByLoc(lat, lon) {
     try {
-      let response = await fetch (`api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.API_KEY}`);
+      let response = await fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${process.env.OPNW_API_KEY}`);
       if (response.status === 200 && response.ok) {
         let jsonifiedResponse = await response.json();
         return jsonifiedResponse;

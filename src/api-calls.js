@@ -1,11 +1,12 @@
 import { TrailService } from './trail-service.js';
 import { GeoService } from './geo-service.js';
+import { WeatherService } from './weather-service.js';
 import $ from 'jQuery';
-// import { WeatherService } from '.weather-service.js';
 
 export function apiCalls(location) {
   const trailService = new TrailService();
   const geoService = new GeoService();
+  const weatherService = new WeatherService();
 
   $("#trail-info").on('click', 'li', function() {
     let currentTrail= $(this).val();
@@ -16,14 +17,14 @@ export function apiCalls(location) {
       } else if (currentTrailResponse.trails.length > 0) {
         $("#more-info h3").html(`${currentTrailResponse.trails[0].name}`);
         let summary;
-          if (currentTrailResponse.trails[0].summary === "Needs Adoption" || currentTrailResponse.trails[0].summary === "Needs Summary") {
-            summary = "unavailable";
-          } else {
-            summary = currentTrailResponse.trails[0].summary;
-          }
+        if (currentTrailResponse.trails[0].summary === "Needs Adoption" || currentTrailResponse.trails[0].summary === "Needs Summary") {
+          summary = "unavailable";
+        } else {
+          summary = currentTrailResponse.trails[0].summary;
+        }
         $("#more-info ul").html(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li>`);
         if (summary != "unavailable") {
-            $("#more-info ul").append(`<li>Summary: ${summary}</li>`);
+          $("#more-info ul").append(`<li>Summary: ${summary}</li>`);
         }
       }
     })();
@@ -33,7 +34,15 @@ export function apiCalls(location) {
     let geoResponse = await geoService.getGeoByInput(location);
     let lat = geoResponse.results[0].geometry.lat;
     let lng = geoResponse.results[0].geometry.lng;
+    let sunrise = geoResponse.results[0].annotations.sun.rise.apparent + geoResponse.results[0].annotations.timezone.offset_sec;
+    let sunset = geoResponse.results[0].annotations.sun.set.apparent + geoResponse.results[0].annotations.timezone.offset_sec;
 
+    //Weather Info
+    (async () => {
+      let weatherResponse = await weatherService.getWeatherByLoc(lat, lng);
+      getWeather(weatherResponse, sunrise, sunset);
+    })();
+    
     //Trail Info
     (async () => {
       let radius = 10;
@@ -47,6 +56,10 @@ export function apiCalls(location) {
       }
     })();
   })();
+
+  const getWeather = function(weatherResponse, sunrise, sunset) {
+    console.log(`Current temperature is ${weatherResponse.main.temp}°F and feels like ${weatherResponse.main.feels_like}°F with ${weatherResponse.main.humidity}% humidity. Conditions are ${weatherResponse.weather[0].main.toLowerCase()}. Sunrise: ${getTime(sunrise)} Sunset: ${getTime(sunset)}`);
+  };
 
   const getElements = function(response) {
     const trailsArray = response.trails;
@@ -62,3 +75,11 @@ export function apiCalls(location) {
     }
   };
 }
+
+const getTime = function(unicode) {
+  let suntime = new Date(unicode *1000);
+  let utcString = suntime.toUTCString();
+  let time = utcString.slice(-12, -4);
+  return time;
+};
+
