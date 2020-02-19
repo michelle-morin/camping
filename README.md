@@ -61,7 +61,7 @@ _Please visit the [Node.js website](https://nodejs.org/en/download/) for install
 _Clone this repository via Terminal using the following commands:_
 * ``$ cd desktop``
 * ``$ git clone https://github.com/michelle-morin/camping``
-* ``$ cd doctor``
+* ``$ cd camping``
 
 _Confirm that you have navigated to the camping directory (e.g., by entering the command_ ``pwd`` _in Terminal). Next, add a file named .env to project root directory (e.g., by entering the command_ ``touch .env`` _in Terminal)._
 * _Make an API key for the [Hiking Project Data API](https://www.hikingproject.com/data) by navigating to the linked website and clicking "sign up of login to get an API Key"_
