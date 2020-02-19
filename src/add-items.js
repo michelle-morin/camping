@@ -14,6 +14,7 @@ import './assets/images/water-filter.png';
 import './assets/images/chair.png';
 import './assets/images/default.png';
 
+
 export function initializePage() {
   $("form#initialize-trip").submit(function(event) {
     event.preventDefault();
@@ -50,6 +51,7 @@ export function addCamper() {
     let inputCamper = $("input#camper").val();
     $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
     $("input#camper").val("");
+    counter++;
   });
 }
 
