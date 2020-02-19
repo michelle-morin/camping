@@ -92,8 +92,9 @@
             <button class="btn" type="submit">Add!</button>
           </form>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1" id="trash">
           <img id="trash-icon" src="assets/images/trash.png" alt="icon of a trashcan">
+          <div class="parent" id="hidden-trash" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
         </div>
       </div>
       <div class="row align-items-start">
