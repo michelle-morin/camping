@@ -22,7 +22,7 @@ export function apiCalls(location) {
         } else {
           summary = currentTrailResponse.trails[0].summary;
         }
-        $("#more-info ul").html(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li>`);
+        $("#more-info ul").html(`<li>Location: ${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Ascent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li>`);
         if (summary != "unavailable") {
           $("#more-info ul").append(`<li>Summary: ${summary}</li>`);
         }
@@ -48,22 +48,32 @@ export function apiCalls(location) {
       let radius = 10;
       let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
       if (trailResponse.trails.length === 0) {
-        radius += 50;
-        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+        for (let i=0; i<3; i++) {
+          radius += 50;
+          let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+          if (trailResponse.trails.length > 0) {
+            getElements(trailResponse);
+            break;
+          }
+        }
+        trailResponse = false;
         getElements(trailResponse);
       } else {
         getElements(trailResponse);
-      }
+      } 
     })();
   })();
 
   const getWeather = function(weatherResponse, sunrise, sunset) {
-    console.log(`Current temperature is ${weatherResponse.main.temp}°F and feels like ${weatherResponse.main.feels_like}°F with ${weatherResponse.main.humidity}% humidity. Conditions are ${weatherResponse.weather[0].main.toLowerCase()}. Sunrise: ${getTime(sunrise)} Sunset: ${getTime(sunset)}`);
+    $("h3#temp").html(`${weatherResponse.main.temp}°F`);
+    $("#weather-info").html(`<h3>Current weather in ${location}:</h3><ul><li>Current temperature: ${weatherResponse.main.temp}°F ( feels like ${weatherResponse.main.feels_like}°F)</li><li>Humidity: ${weatherResponse.main.humidity}%</li><li>Conditions are ${weatherResponse.weather[0].main.toLowerCase()}.</li><li>Sunrise: ${getTime(sunrise)}<br>Sunset: ${getTime(sunset)}</li></ul>`);
   };
 
   const getElements = function(response) {
     const trailsArray = response.trails;
-    if (trailsArray) {
+    if (response === false) {
+      $("#trail-info").html("There are no trails found within 160 miles of your trip destination.")
+    } else if (trailsArray) {
       trailsArray.sort(function(a, b) {
         return b.stars - a.stars;
       });

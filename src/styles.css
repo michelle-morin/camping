@@ -26,19 +26,18 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #111111;
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Cabin Condensed', sans-serif;
 }
 
 #splash-screen .jumbotron {
   margin-top: 4%;
   background-color: transparent;
-  border: 2px solid #f5f5f5;
   color: #f5f5f5;
 }
 
 #splash-screen .jumbotron h1 {
   font-family: 'Amatic SC', cursive;
-  font-size: 5em;
+  font-size: 6em;
   font-weight: bolder;
   text-align: center;
   margin-top: -2%;
@@ -53,13 +52,14 @@ form#initialize-trip {
   padding-right: 5%;
   padding-bottom: 2%;
   padding-top: 2%;
-  border: 2px solid #f5f5f5;
+  border: 2px solid #111111;
   background-color: #eeeeee75;
 }
 
 form#initialize-trip h4 {
   font-family: 'Alegreya Sans SC', sans-serif;
-  font-size: 2em;
+  font-size: 2.25em;
+  font-weight: bold;
   color: #f5f5f5;
   -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: #111111;
@@ -88,20 +88,23 @@ form#initialize-trip button.btn:hover {
 input.form-control, input.form-control:focus, input.form-control:active {
   box-shadow: none;
   outline: none;
+  border: 1px solid #111111;
   background-color: transparent;
   color: #111111;
 }
 
 /* Styles for "add-items" main screen */
 #add-items .jumbotron {
-  margin-top: 2%;
-  background-color: #eeeeee75;
-  border: 2px solid #f5f5f5;
+  padding-bottom: 2%;
+  background-color: transparent;
 }
 
 #add-items .jumbotron h3 {
-  font-weight: bolder;
-  color: #111111;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 3em;
+  color: #f5f5f5;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #111111;
   text-align: center;
 }
 
@@ -111,18 +114,19 @@ input.form, input.form:focus, input.form:active {
   border: 1px solid #111111;
   border-radius: 10px;
   margin-left: 1%;
-  background-color: #eeeeee75;
+  background-color: #eeeeee95;
   height: 2em;
   color: #111111;
 }
 
 select.form {
-  background-color: #eeeeee75;
+  background-color: #eeeeee95;
   height: 2em;
 }
 
 form#add-camper button.btn, form#add-known-item button.btn, form#add-other-item button.btn {
   border: 1px solid #07250e;
+  font-family: 'Alegreya Sans SC', sans-serif;
   background-color: transparent;
   height: 2em;
 }
@@ -132,6 +136,7 @@ form#add-camper button.btn {
 }
 
 form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add-other-item button.btn:hover {
+  font-family: 'Alegreya Sans SC', sans-serif;
   border: 1px solid #07250e;
   background-color: #07250e;
   color: #f5f5f5;
@@ -146,16 +151,16 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
 }
 
 #campers .card {
-  background-color: #eeeeee75;
+  height: 350px;
+  background-color: #eeeeee95;
   border: 2px solid #111111;
   border-radius: 20px;
   margin: 1%;
+  margin-bottom: 2%;
 }
 
 #campers .card .card-body {
-  height: 300px;
   width: 90%;
-  /* margin: 1%; */
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
@@ -163,6 +168,9 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
 
 #campers .card .card-header {
   text-align: center;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 2em;
+  color: #111111;
 }
 
 #campers .box {
@@ -179,11 +187,12 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
 
 #added-items {
   margin-top: 1%;
+  margin-bottom: 1%;
   border: 2px solid #111111;
-  background-color: #eeeeee75;
+  background-color: #eeeeee95;
   border-radius: 20px;
   min-height: 350px;
-  max-height: 600px;
+  max-height: 350px;
   overflow-y: auto;
   display: flex;
   justify-content: center;
@@ -198,6 +207,7 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
   max-width: 100px;
   border: 2px solid #111111;
   margin: 1%;
+  margin-bottom: 0%;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -210,19 +220,48 @@ img {
   pointer-events: none;
 }
 
-#trails {
+.box {
+  padding: 1%;
+  overflow-y: auto;
+}
+
+.box h5 {
+  overflow-wrap: break-word;
+}
+
+#trails, #weather-info {
   border: 2px solid #111111;
   border-radius: 20px;
-  margin-top: 2%;
+  margin-bottom: 1%;
   padding: 2%;
-  background-color: #eeeeee75;
+  background-color: #eeeeee95;
+}
+
+#weather-info {
+  width: 100%;
+  margin-bottom: 4%;
 }
 
 #trail-info li {
   cursor: pointer;
 }
 
+#weather-info h3, #trail-info h3, #more-info h3 {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 2em;
+  color: #111111;
+}
+
+#weather-info li, #trail-info li, #more-info li {
+  font-size: large;
+}
+
 button#save-trip {
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
   border: 2px solid #111111;
-  width: 100%;
+  width: 50%;
+  font-family: 'Alegreya Sans SC', sans-serif;
 }
