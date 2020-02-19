@@ -22,7 +22,7 @@ export function apiCalls(location) {
         } else {
           summary = currentTrailResponse.trails[0].summary;
         }
-        $("#more-info ul").html(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Acent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li>`);
+        $("#more-info ul").html(`<li>Location:${currentTrailResponse.trails[0].location}</li><li>Difficulty: ${currentTrailResponse.trails[0].difficulty}</li><li>Ascent: ${currentTrailResponse.trails[0].ascent}</li><li>Descent: ${currentTrailResponse.trails[0].descent}</li>`);
         if (summary != "unavailable") {
           $("#more-info ul").append(`<li>Summary: ${summary}</li>`);
         }
