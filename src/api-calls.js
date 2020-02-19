@@ -58,8 +58,8 @@ export function apiCalls(location) {
   })();
 
   const getWeather = function(weatherResponse, sunrise, sunset) {
-    $("h3#temp").html(`Current temperature is ${weatherResponse.main.temp}°F`);
-    $("#weather-info").html(`<h3>The current weather in ${location} is:</h3><ul><li>Current temperature: ${weatherResponse.main.temp}°F ( feels like ${weatherResponse.main.feels_like}°F)</li><li>Humidity: ${weatherResponse.main.humidity}%</li><li>Conditions are ${weatherResponse.weather[0].main.toLowerCase()}.</li><li>Sunrise: ${getTime(sunrise)}<br>Sunset: ${getTime(sunset)}</li></ul>`);
+    $("h3#temp").html(`${weatherResponse.main.temp}°F`);
+    $("#weather-info").html(`<h3>Current weather in ${location}:</h3><ul><li>Current temperature: ${weatherResponse.main.temp}°F ( feels like ${weatherResponse.main.feels_like}°F)</li><li>Humidity: ${weatherResponse.main.humidity}%</li><li>Conditions are ${weatherResponse.weather[0].main.toLowerCase()}.</li><li>Sunrise: ${getTime(sunrise)}<br>Sunset: ${getTime(sunset)}</li></ul>`);
   };
 
   const getElements = function(response) {
