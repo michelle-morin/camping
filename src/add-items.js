@@ -69,9 +69,8 @@ export function addOtherItem() {
   $("form#add-other-item").submit(function(event) {
     event.preventDefault();
     otherItemNumber += 1;
-    let defaultImgUrl = 'assets/images/default.png';
     let otherItem = $("input#other-item").val();
     $("input#other-item").val("");
-    $("#added-items").append(`<div id="${otherItem}${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box" style="background-image: url(${defaultImgUrl});"><h5>${otherItem}</h5></div>`);
+    $("#added-items").append(`<div id="${otherItem}${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box" style="background-color: #07250e86; color: #f5f5f5;"><center><h5>${otherItem}</h5></center></div>`);
   });
 }
