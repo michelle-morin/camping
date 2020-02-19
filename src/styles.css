@@ -210,6 +210,15 @@ img {
   pointer-events: none;
 }
 
+.box {
+  padding: 1%;
+  overflow-y: auto;
+}
+
+.box h5 {
+  overflow-wrap: break-word;
+}
+
 #trails {
   border: 2px solid #111111;
   border-radius: 20px;
