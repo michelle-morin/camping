@@ -36,7 +36,7 @@ export function initializePage() {
 
     apiCalls(location);
 
-    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
     $("#splash-screen").hide();
@@ -49,7 +49,7 @@ export function addCamper() {
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
     let inputCamper = $("input#camper").val();
-    $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+    $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
     $("input#camper").val("");
     counter++;
   });
