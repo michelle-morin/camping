@@ -7,7 +7,6 @@ export function apiCalls(location) {
   const trailService = new TrailService();
   const geoService = new GeoService();
   const weatherService = new WeatherService();
-
   $("#trail-info").on('click', 'li', function() {
     let currentTrail= $(this).val();
     (async () => {
@@ -29,21 +28,18 @@ export function apiCalls(location) {
       }
     })();
   });
-
   (async () => {
     let geoResponse = await geoService.getGeoByInput(location);
     let lat = geoResponse.results[0].geometry.lat;
     let lng = geoResponse.results[0].geometry.lng;
     let sunrise = geoResponse.results[0].annotations.sun.rise.apparent + geoResponse.results[0].annotations.timezone.offset_sec;
     let sunset = geoResponse.results[0].annotations.sun.set.apparent + geoResponse.results[0].annotations.timezone.offset_sec;
-
-    //Weather Info
+    // Weather Info
     (async () => {
       let weatherResponse = await weatherService.getWeatherByLoc(lat, lng);
       getWeather(weatherResponse, sunrise, sunset);
     })();
-    
-    //Trail Info
+    // Trail Info
     (async () => {
       let radius = 10;
       let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
@@ -63,12 +59,10 @@ export function apiCalls(location) {
       } 
     })();
   })();
-
   const getWeather = function(weatherResponse, sunrise, sunset) {
     $("h3#temp").html(`${weatherResponse.main.temp}°F`);
     $("#weather-info").html(`<h3>Current weather in ${location}:</h3><ul><li>Current temperature: ${weatherResponse.main.temp}°F ( feels like ${weatherResponse.main.feels_like}°F)</li><li>Humidity: ${weatherResponse.main.humidity}%</li><li>Conditions are ${weatherResponse.weather[0].main.toLowerCase()}.</li><li>Sunrise: ${getTime(sunrise)}<br>Sunset: ${getTime(sunset)}</li></ul>`);
   };
-
   const getElements = function(response) {
     const trailsArray = response.trails;
     if (response === false) {
@@ -85,7 +79,6 @@ export function apiCalls(location) {
     }
   };
 }
-
 const getTime = function(unicode) {
   let suntime = new Date(unicode *1000);
   let utcString = suntime.toUTCString();
