@@ -14,6 +14,7 @@ import './assets/images/water-filter.png';
 import './assets/images/chair.png';
 import './assets/images/default.png';
 
+
 export function initializePage() {
   $("form#initialize-trip").submit(function(event) {
     event.preventDefault();
@@ -50,6 +51,7 @@ export function addCamper() {
     let inputCamper = $("input#camper").val();
     $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
     $("input#camper").val("");
+    counter++;
   });
 }
 
@@ -69,9 +71,8 @@ export function addOtherItem() {
   $("form#add-other-item").submit(function(event) {
     event.preventDefault();
     otherItemNumber += 1;
-    let defaultImgUrl = 'assets/images/default.png';
     let otherItem = $("input#other-item").val();
     $("input#other-item").val("");
-    $("#added-items").append(`<div id="${otherItem}${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box" style="background-image: url(${defaultImgUrl});"><h5>${otherItem}</h5></div>`);
+    $("#added-items").append(`<div id="${otherItem}${otherItemNumber}" ondragstart="onDragStart(event);" draggable="true" class="box" style="background-color: #07250e86; color: #f5f5f5;"><center><h5>${otherItem}</h5></center></div>`);
   });
 }
