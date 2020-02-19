@@ -72,7 +72,7 @@ export function apiCalls(location) {
   const getElements = function(response) {
     const trailsArray = response.trails;
     if (response === false) {
-      $("#trail-info").html("There are no trails found within 160 miles of your trip destination.")
+      $("#trail-info").html("There are no trails found within 160 miles of your trip destination.");
     } else if (trailsArray) {
       trailsArray.sort(function(a, b) {
         return b.stars - a.stars;
