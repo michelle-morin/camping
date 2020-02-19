@@ -1,5 +1,6 @@
 // import into main.js
 
+import { finalizeTrip } from './finalize.js';
 import { initializePage, addCamper, addKnownItem, addOtherItem } from './add-items.js';
 import $ from 'jquery';
 import 'bootstrap';
@@ -11,4 +12,5 @@ $(document).ready(function() {
   addCamper();
   addKnownItem();
   addOtherItem();
+  finalizeTrip();
 });
