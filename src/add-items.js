@@ -30,7 +30,7 @@ export function initializePage() {
     let formatStartDate = startDate.toDateString();
     let formatEndDate = endDate.toDateString();
     let reformatStartDate = formatStartDate.slice(0,11);
-    
+
     if (storedLocation != "" || storedTripOrganizer != "" || storedStartDate != "" || storedEndDate != ""){
       $("#campers").append(`<div class="card"><div class="card-header">${storedTripOrganizer}</div><div class="card-body parent" id="${storedTripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
       $("h3#trip-location").html(`${storedLocation}`);
@@ -54,14 +54,12 @@ export function initializePage() {
       console.log("storedEndDate : " + storedEndDate);
       console.log("campers: " + campers);
 
-
       $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
       $("h3#trip-location").html(`${location}`);
       $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
       $("#splash-screen").hide();
       $("#add-items").show();
     }
-
     if (startDate >= endDate) {
       $(".modal").show();
       setTimeout(function() {
@@ -69,7 +67,6 @@ export function initializePage() {
       }, 2000);
       document.getElementById("EndDate").value = "";
     }
-
     apiCalls(location);
   });
 }
