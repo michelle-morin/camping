@@ -7,7 +7,7 @@
   <title>Camping Trip Planner</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div id="splash-screen">
       <div class="jumbotron">
         <h1>Camping Trip Planner</h1>
@@ -25,6 +25,15 @@
           <div class="col-md-6">
             <h4>When does the trip end?</h4>
             <input type="date" class="form-control" id="end-date">
+          </div>
+        </div>
+        <div class="modal" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h3>Please choose an end date later than the start date</h3> 
+              </div>
+            </div>
           </div>
         </div>
         <button type="submit" class="btn btn-block">Start planning!</button>
@@ -45,44 +54,47 @@
           <button class="btn" id="save-trip">Finalize trip!</button>
         </div>
       </div>
-      <div class="row">
+      <div class="row align-items-start">
         <div class="col-md-5">
           <form id="add-camper" class="row">
             <label for="camper">Camper's name:</label>
             <input type="text" class="form" id="camper" required>
             <button type="submit" class="btn">Add camper</button>
           </form>
-          <div class="row">
-            <h3>Campers:</h3>
-          </div>
+        </div>
+        <div class="col-md-4">
+          <form id="add-known-item">
+            <label for="item">Add shared items:</label>
+            <select class="form" id="known-item">
+              <option value="tent">tent</option>
+              <option value="firewood">firewood</option>
+              <option value="cooler">cooler</option>
+              <option value="stove">camp stove</option>
+              <option value="firstaid">first aid kit</option>
+              <option value="water-filter">water filter</option>
+              <option value="hatchet">hatchet</option>
+              <option value="booze">booze</option>
+              <option value="transport">transportation</option>
+              <option value="lantern">lantern</option>
+              <option value="cards">cards</option>
+              <option value="chair">camp chair</option>
+            </select>
+            <button class="btn" type="submit">Add!</button>
+          </form>
+        </div>
+        <div class="col-md-3">
+          <form id="add-other-item">
+            <input type="text" class="form" name="other-item" id="other-item" required>
+            <button class="btn" type="submit">Add!</button>
+          </form>
+        </div>
+      </div>
+      <div class="row align-items-start">
+        <div class="col-md-5">
           <div id="campers">
           </div>
         </div>
         <div class="col-md-7">
-          <div class="row">
-            <form id="add-known-item">
-              <label for="item">Add shared items:</label>
-              <select class="form" id="known-item">
-                <option value="tent">tent</option>
-                <option value="firewood">firewood</option>
-                <option value="cooler">cooler</option>
-                <option value="stove">camp stove</option>
-                <option value="firstaid">first aid kit</option>
-                <option value="water-filter">water filter</option>
-                <option value="hatchet">hatchet</option>
-                <option value="booze">booze</option>
-                <option value="transport">transportation</option>
-                <option value="lantern">lantern</option>
-                <option value="cards">cards</option>
-                <option value="chair">camp chair</option>
-              </select>
-              <button class="btn" type="submit">Add!</button>
-            </form>
-            <form id="add-other-item">
-              <input type="text" class="form" name="other-item" id="other-item" required>
-              <button class="btn" type="submit">Add!</button>
-            </form>
-          </div>
           <div class="row parent" ondragover="onDragOver(event);" ondrop="onDrop(event);" id="added-items">
           </div>
           <div class="row" id="trails">
