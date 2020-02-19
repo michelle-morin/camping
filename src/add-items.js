@@ -13,7 +13,12 @@ import './assets/images/transport.png';
 import './assets/images/water-filter.png';
 import './assets/images/chair.png';
 import './assets/images/default.png';
-
+let storedLocation = JSON.parse(localStorage.getItem('storedLocation')|| "[]");
+let storedTripOrganizer = JSON.parse(localStorage.getItem('storedTripOrganizer')|| "[]");
+let storedStartDate = JSON.parse(localStorage.getItem('storedStartDate')|| "[]");
+let storedEndDate = JSON.parse(localStorage.getItem('storedEndDate')|| "[]");
+// let storedCampers = JSON.parse(localStorage.getItem('storedCampers')|| "[]");
+let campers = [];
 
 export function initializePage() {
   $("form#initialize-trip").submit(function(event) {
@@ -25,6 +30,37 @@ export function initializePage() {
     let formatStartDate = startDate.toDateString();
     let formatEndDate = endDate.toDateString();
     let reformatStartDate = formatStartDate.slice(0,11);
+    
+    if (storedLocation != "" || storedTripOrganizer != "" || storedStartDate != "" || storedEndDate != ""){
+      $("#campers").append(`<div class="card"><div class="card-header">${storedTripOrganizer}</div><div class="card-body parent" id="${storedTripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+      $("h3#trip-location").html(`${storedLocation}`);
+      $("h3#trip-date").html(`${storedStartDate} — ${storedEndDate}`);
+      $("#splash-screen").hide();
+      $("#add-items").show();
+      campers.push(storedTripOrganizer);
+      console.log("already storedLocation : " + storedLocation);
+      console.log("already storedTripOrganizer : " + storedTripOrganizer);
+      console.log("already storedStartDate : " + storedStartDate);
+      console.log("already storedEndDate : " + storedEndDate);
+    } else {
+      localStorage.setItem('storedLocation', JSON.stringify(location));
+      localStorage.setItem('storedTripOrganizer', JSON.stringify(tripOrganizer));
+      localStorage.setItem('storedStartDate', JSON.stringify(startDate));
+      localStorage.setItem('storedEndDate', JSON.stringify(endDate));
+      campers.push(tripOrganizer);
+      console.log("storedLocation : " + storedLocation);
+      console.log("storedTripOrganizer : " + storedTripOrganizer);
+      console.log("storedStartDate : " + storedStartDate);
+      console.log("storedEndDate : " + storedEndDate);
+      console.log("campers: " + campers);
+
+
+      $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+      $("h3#trip-location").html(`${location}`);
+      $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
+      $("#splash-screen").hide();
+      $("#add-items").show();
+    }
 
     if (startDate >= endDate) {
       $(".modal").show();
@@ -36,22 +72,28 @@ export function initializePage() {
 
     apiCalls(location);
 
-    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
-    $("h3#trip-location").html(`${location}`);
-    $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
-    $("#splash-screen").hide();
-    $("#add-items").show();
   });
 }
 
 export function addCamper() {
-  let counter = 2;
+  let counter = 0;
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
     let inputCamper = $("input#camper").val();
-    $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
-    $("input#camper").val("");
-    counter++;
+    let inputCamperCounter = ($("input#camper").val() + counter);
+    if (campers.includes(inputCamperCounter)){
+      console.log ("This person is already invited on your camping trip, ya dingus!");
+    } else {
+      campers.push(inputCamperCounter);
+      $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+      $("input#camper").val("");
+      counter++;
+      console.log("inputCamper: " + inputCamper);
+      console.log("inputCamperCounter: " + inputCamperCounter);
+      console.log("campers: " + campers);
+    }
+
+
   });
 }
 
