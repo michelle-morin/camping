@@ -55,7 +55,7 @@ export function initializePage() {
       console.log("campers: " + campers);
 
 
-      $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+      $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
       $("h3#trip-location").html(`${location}`);
       $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
       $("#splash-screen").hide();
@@ -71,7 +71,6 @@ export function initializePage() {
     }
 
     apiCalls(location);
-
   });
 }
 
@@ -85,15 +84,13 @@ export function addCamper() {
       console.log ("This person is already invited on your camping trip, ya dingus!");
     } else {
       campers.push(inputCamperCounter);
-      $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
+      $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamper}${counter}" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
       $("input#camper").val("");
       counter++;
       console.log("inputCamper: " + inputCamper);
       console.log("inputCamperCounter: " + inputCamperCounter);
       console.log("campers: " + campers);
     }
-
-
   });
 }
 

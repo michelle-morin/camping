@@ -94,7 +94,7 @@
         </div>
         <div class="col-md-1" id="trash">
           <img id="trash-icon" src="assets/images/trash.png" alt="icon of a trashcan">
-          <div class="parent" id="hidden-trash" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+          <div class="parent" id="hidden-trash" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondrop="onDrop(event);" ondragleave="onDragLeave(event);"></div>
         </div>
       </div>
       <div class="row align-items-start">
@@ -132,16 +132,46 @@
         .setData('text/plain', event.target.id);
     }
 
+    function onDragEnter(event) {
+      event.preventDefault();
+      if (event.target.id == "hidden-trash") {
+        let zoomable = document.getElementById("trash-icon");
+        zoomable.style.transform = "scale(2)";
+      } else if ( event.target.classList.contains("parent") && event.target.id != "added-items") {
+        let parentCard = event.target.parentElement;
+        parentCard.style.border = "3px dotted #fd8b17";
+      }
+    }
+
     function onDragOver(event) {
       event.preventDefault();
       event.stopPropagation();
+    }
+
+    function onDragLeave(event) {
+      event.preventDefault();
+      if (event.target.id == "hidden-trash") {
+        let zoomable = document.getElementById("trash-icon");
+        zoomable.style.transform = "scale(1)";
+      } else if ( event.target.classList.contains("parent") && event.target.id != "added-items") {
+        let parentCard = event.target.parentElement;
+        parentCard.style.border = "2px solid #111111";
+      }
     }
 
     function onDrop(event) {
       const id = event.dataTransfer.getData('text');
       const draggableElement = document.getElementById(id);
       const dropzone = event.currentTarget;
-      if (dropzone.classList.contains("parent")){
+      if (dropzone.id === "hidden-trash") {
+        dropzone.appendChild(draggableElement);
+        let zoomable = document.getElementById("trash-icon");
+        zoomable.style.transform = "scale(1)";
+      } else if (dropzone.classList.contains("parent") && event.target.id != "added-items") {
+        dropzone.appendChild(draggableElement);
+        let parentCard = event.target.parentElement;
+        parentCard.style.border = "2px solid #111111";
+      } else if (event.target.id == "added-items") {
         dropzone.appendChild(draggableElement);
       }
     }
