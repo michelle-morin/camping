@@ -19,15 +19,25 @@ export function initializePage() {
     event.preventDefault();
     const location = $("input#location").val();
     const tripOrganizer = $("input#organizer").val();
-    const startDate = $("#start-date").val();
-    const endDate = $("#end-date").val();
+    const startDate = new Date($("#start-date").val());
+    const endDate = new Date($("#end-date").val());
+    let formatStartDate = startDate.toDateString();
+    let formatEndDate = endDate.toDateString();
+    let reformatStartDate = formatStartDate.slice(0,11);
+
+    if (startDate >= endDate) {
+      $(".modal").show();
+      setTimeout(function() {
+        $(".modal").hide();
+      }, 2000);
+      document.getElementById("EndDate").value = "";
+    }
 
     apiCalls(location);
 
-    // Add any necessary clases for drag/drop into the append statement
-    $("#campers").append(`<div id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);" class="card parent"><h3>${tripOrganizer}</h3></div>`);
+    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="camper1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
     $("h3#trip-location").html(`${location}`);
-    $("h3#trip-date").html(`${startDate}-${endDate}`);
+    $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
     $("#splash-screen").hide();
     $("#add-items").show();
   });
