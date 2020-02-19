@@ -265,3 +265,30 @@ button#save-trip {
   width: 50%;
   font-family: 'Alegreya Sans SC', sans-serif;
 }
+
+#trash {
+  position: relative;
+  z-index: 1;
+  height: 60px;
+  width: 50px;
+}
+
+img#trash-icon {
+  height: 60px;
+  width: auto;
+  position: absolute;
+  z-index: 2;
+}
+
+#hidden-trash {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 50px;
+  z-index: 3;
+}
+
+#hidden-trash .box {
+  display: none;
+}
