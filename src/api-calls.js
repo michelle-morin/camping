@@ -39,7 +39,7 @@ export function apiCalls(location) {
 
     //Weather Info
     (async () => {
-      let weatherResponse = await weatherService.getWeatherByLoc(lat, lng, sunrise, sunset);
+      let weatherResponse = await weatherService.getWeatherByLoc(lat, lng);
       getWeather(weatherResponse, sunrise, sunset);
     })();
     
