@@ -26,7 +26,10 @@ export function initializePage() {
     let reformatStartDate = formatStartDate.slice(0,11);
 
     if (startDate >= endDate) {
-      alert(""); // change to modal.
+      $(".modal").show();
+      setTimeout(function() {
+        $(".modal").hide();
+      }, 2000);
       document.getElementById("EndDate").value = "";
     }
 
