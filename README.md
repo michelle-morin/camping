@@ -22,6 +22,7 @@ _This application allows a user to organize a camping trip. The webpage allows a
 | Webpage displays current temperature for input location in jumbotron of main page after user submits splash screen form | "Bend, OR" | 37 degrees F |
 | Webpage determines list of trails nearby user's input location | "Portland, OR" | wildwood trail, etc. displayed in trail info box on right side of main page |
 | Webpage displays error message if API call for locating nearby trails fails | 400-level response status | "There was an error retrieving nearby trails." |
+| Webpage displays error message if API call for locating nearby trails does not return any results within 160 miles | Mongolia | "There were no trails found within 160 miles of your search location." |
 | Webpage increases search radius for locating nearby trails if there are no results within 10mi of initial input location | "John Day, OR" | displays list of trails ~ 100mi away from John Day, OR in trail info box |
 | Webpage displays list of trails in order of most popular to least popular | user enters location for trip and submits form | most popular to least popular nearby trails are displayed in trail info box |
 | Webpage allows user to click on any listed trail to display more details about the clicked trail | user clicks "wildwood trail" | webpage displays difficulty, ascent, descent, etc. on right side column of trail info box |
