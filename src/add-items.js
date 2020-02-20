@@ -63,7 +63,7 @@ export function initializePage() {
       localStorage.setItem('storedStartDate', JSON.stringify(startDate));
       localStorage.setItem('storedEndDate', JSON.stringify(endDate));
 
-      $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
+      $("#campers").append(`<div class="card"><div class="card-header" id="permanent">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
       $("h3#trip-location").html(`${location}`);
       $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
       $("#splash-screen").hide();
