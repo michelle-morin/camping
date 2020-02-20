@@ -18,9 +18,6 @@ export function finalizeTrip() {
     // storedCampers.push(campers);
     // storedCamperItems.push(camperItems);
   }
-  console.log("storedCampers: " + storedCampers);
-  console.log("storedCamperItems: " + storedCamperItems);
-  
   document.getElementById("save-trip").onclick = function() { 
     finalizeTrip();
   };
