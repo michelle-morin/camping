@@ -27,6 +27,7 @@ _This application allows a user to organize a camping trip. The webpage allows a
 | Webpage displays list of trails in order of most popular to least popular | user enters location for trip and submits form | most popular to least popular nearby trails are displayed in trail info box |
 | Webpage allows user to click on any listed trail to display more details about the clicked trail | user clicks "wildwood trail" | webpage displays difficulty, ascent, descent, etc. on right side column of trail info box |
 | Webpage displays more detailed weather information in weather info box below trail info box | user inputs "Bend OR" and submits form on splash screen | "Current weather in Bend, OR: Current temperature: 29.91°F ( feels like 21.63°F), Humidity: 47%, Conditions are clear. Sunrise: 06:59:00, Sunset: 17:39:00" |
+| Webpage allows user to move an item with a box class over a trash icon, and remove the item from display ondrop | user moves tent icon to trash icon | tent icon removed from display |
 
 ## Project Concept:
 
