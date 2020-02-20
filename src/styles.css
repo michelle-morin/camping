@@ -328,3 +328,15 @@ img#trash-icon {
   width: 50px;
   z-index: 3;
 }
+
+#dontRevertButton {
+  display: none;
+}
+#revertButton {
+  display: none;
+}
+
+#errorTrip {
+  display: none;
+}
+

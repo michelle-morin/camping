@@ -1,3 +1,6 @@
+let storedCampers = JSON.parse(localStorage.getItem('storedCampers')|| "[]");
+let storedCamperItems = JSON.parse(localStorage.getItem('storedCamperItems')|| "[]");
+
 export function finalizeTrip() {
   let campers = [];
   let camperItems = [];
@@ -10,9 +13,14 @@ export function finalizeTrip() {
       currentCamperItems.push(itemsForCamper[i].id);
     }
     camperItems.push(currentCamperItems);
+    localStorage.setItem('storedCampers', JSON.stringify(campers));
+    localStorage.setItem('storedCamperItems', JSON.stringify(camperItems));
+    // storedCampers.push(campers);
+    // storedCamperItems.push(camperItems);
   }
-  localStorage.setItem('storedcampers', JSON.stringify(campers));
-  localStorage.setItem('storedCamperItems', JSON.stringify(camperItems));
+  console.log("storedCampers: " + storedCampers);
+  console.log("storedCamperItems: " + storedCamperItems);
+  
   document.getElementById("save-trip").onclick = function() { 
     finalizeTrip();
   };
