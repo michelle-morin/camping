@@ -304,7 +304,3 @@ img#trash-icon {
   width: 50px;
   z-index: 3;
 }
-
-#hidden-trash .box {
-  display: none;
-}
