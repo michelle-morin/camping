@@ -31,14 +31,25 @@ export function initializePage() {
     let formatStartDate = startDate.toDateString();
     let formatEndDate = endDate.toDateString();
     let reformatStartDate = formatStartDate.slice(0,11);
-
-    if (startDate >= endDate) {
+    const today = new Date();
+    console.log(today);
+    console.log(startDate);
+  
+    if (startDate < today) {
+      $("#errorDate h3").text("You can't go camping in a time machine yet... sorry.");
       $("#errorDate").show();
       setTimeout(function() {
         $("#errorDate").hide();
       }, 2000);
-      document.getElementById("EndDate").value = "";
-    }
+      document.getElementById("start-date").value = "";
+    } else if (startDate >= endDate) {
+      $("#errorDate h3").text("Please choose an end date later than the start date");
+      $("#errorDate").show();
+      setTimeout(function() {
+        $("#errorDate").hide();
+      }, 2000);
+      document.getElementById("end-date").value = "";
+    } else {
     // if (storedLocation != "" || storedTripOrganizer != "" || storedStartDate != "" || storedEndDate != ""){
     //   $("#campers").append(`<div class="card"><div class="card-header">${storedTripOrganizer}</div><div class="card-body parent" id="${storedTripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
     //   $("h3#trip-location").html(`${storedLocation}`);
@@ -61,6 +72,7 @@ export function initializePage() {
     // }
     apiCalls(location);
     finalizeTrip();
+    }
   });
 }
 
