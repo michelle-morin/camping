@@ -169,14 +169,9 @@
     }
 
     function giveEmTheAxe(event) {
-      event.preventDefault();
-      $(document).click('.parent img', function(){
-        let imgClicked = event.target;
-        console.log("Click");
-        let parentHeader = imgClicked.parent().get();
-        let parentCard = parentHeader.parent().get();
-        parentCard.parentNode.removeChild(parentCard);
-      });
+      let cardHeader = event.target;
+      let parentCard = cardHeader.parentNode;
+      parentCard.parentNode.removeChild(parentCard);
      }
 
     function onDrop(event) {
