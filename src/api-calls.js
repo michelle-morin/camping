@@ -41,24 +41,23 @@ export function apiCalls(location) {
     })();
     // Trail Info
     (async () => {
-      let radius = 10;
+      let radius = 20;
       let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
       if (trailResponse.trails.length === 0) {
-        for (let i=0; i<3; i++) {
-          radius += 50;
-          let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
-          if (trailResponse.trails.length > 0) {
-            getElements(trailResponse);
-            break;
-          }
+        radius += 80;
+        let trailResponse = await trailService.getTrailInfoByLoc(lat, lng, radius);
+        console.log(trailResponse.trails);
+        if (trailResponse.length > 0) {
+          getElements(trailResponse);
+        } else {
+          getElements(false);
         }
-        trailResponse = false;
-        getElements(trailResponse);
       } else {
         getElements(trailResponse);
       } 
     })();
   })();
+
   const getWeather = function(weatherResponse, sunrise, sunset) {
     $("h3#temp").html(`${weatherResponse.main.temp}°F`);
     $("#weather-info").html(`<h3>Current weather in ${location}:</h3><ul><li>Current temperature: ${weatherResponse.main.temp}°F ( feels like ${weatherResponse.main.feels_like}°F)</li><li>Humidity: ${weatherResponse.main.humidity}%</li><li>Conditions are ${weatherResponse.weather[0].main.toLowerCase()}.</li><li>Sunrise: ${getTime(sunrise)}<br>Sunset: ${getTime(sunset)}</li></ul>`);
@@ -66,7 +65,7 @@ export function apiCalls(location) {
   const getElements = function(response) {
     const trailsArray = response.trails;
     if (response === false) {
-      $("#trail-info").html("There are no trails found within 160 miles of your trip destination.");
+      $("#trail-info").html("There are no trails found within 100 miles of your trip destination.");
     } else if (trailsArray) {
       trailsArray.sort(function(a, b) {
         return b.stars - a.stars;
