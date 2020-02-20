@@ -26,19 +26,30 @@ export function initializePage() {
     event.preventDefault();
     const location = $("input#location").val();
     const tripOrganizer = $("input#organizer").val();
-    const startDate = new Date($("#start-date").val());
-    const endDate = new Date($("#end-date").val());
+    const startDateInput = new Date($("#start-date").val());
+    let startDate = new Date(startDateInput.getTime() + 1919 * 60000);
+    const endDateInput = new Date($("#end-date").val());
+    let endDate = new Date(endDateInput.getTime() + 1919 * 60000);
     let formatStartDate = startDate.toDateString();
     let formatEndDate = endDate.toDateString();
     let reformatStartDate = formatStartDate.slice(0,11);
-
-    if (startDate >= endDate) {
+    const today = new Date();
+  
+    if (startDate < today) {
+      $("#errorDate h3").text("You can't go camping in a time machine yet... sorry.");
       $("#errorDate").show();
       setTimeout(function() {
         $("#errorDate").hide();
       }, 2000);
-      document.getElementById("EndDate").value = "";
-    }
+      document.getElementById("start-date").value = "";
+    } else if (startDate >= endDate) {
+      $("#errorDate h3").text("Please choose an end date later than the start date");
+      $("#errorDate").show();
+      setTimeout(function() {
+        $("#errorDate").hide();
+      }, 2000);
+      document.getElementById("end-date").value = "";
+    } else {
     // if (storedLocation != "" || storedTripOrganizer != "" || storedStartDate != "" || storedEndDate != ""){
     //   $("#campers").append(`<div class="card"><div class="card-header">${storedTripOrganizer}</div><div class="card-body parent" id="${storedTripOrganizer}1" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div></div>`);
     //   $("h3#trip-location").html(`${storedLocation}`);
@@ -47,20 +58,21 @@ export function initializePage() {
     //   $("#add-items").show();
     //   campers.push(storedTripOrganizer);
     // } else {
-    localStorage.setItem('storedLocation', JSON.stringify(location));
-    localStorage.setItem('storedTripOrganizer', JSON.stringify(tripOrganizer));
-    localStorage.setItem('storedStartDate', JSON.stringify(startDate));
-    localStorage.setItem('storedEndDate', JSON.stringify(endDate));
-    campers.push(tripOrganizer);
+      localStorage.setItem('storedLocation', JSON.stringify(location));
+      localStorage.setItem('storedTripOrganizer', JSON.stringify(tripOrganizer));
+      localStorage.setItem('storedStartDate', JSON.stringify(startDate));
+      localStorage.setItem('storedEndDate', JSON.stringify(endDate));
+      campers.push(tripOrganizer);
 
-    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
-    $("h3#trip-location").html(`${location}`);
-    $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
-    $("#splash-screen").hide();
-    $("#add-items").show();
-    // }
-    apiCalls(location);
-    finalizeTrip();
+      $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
+      $("h3#trip-location").html(`${location}`);
+      $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
+      $("#splash-screen").hide();
+      $("#add-items").show();
+      // }
+      apiCalls(location);
+      finalizeTrip();
+    }
   });
 }
 
