@@ -4,7 +4,6 @@
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed:600&display=swap" rel="stylesheet">
-
   <title>Camping Trip Planner</title>
 </head>
 <body>
@@ -28,7 +27,7 @@
             <input type="date" class="form-control" id="end-date" required>
           </div>
         </div>
-        <div class="modal" role="dialog" aria-hidden="true">
+        <div class="modal" id="errorDate" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-body">
@@ -63,6 +62,15 @@
           <form id="add-camper" class="row">
             <label for="camper">Camper's name:</label>
             <input type="text" class="form" id="camper" required>
+            <div class="modal" id="errorCamper" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <h3>This person is already invited on your camping trip!</h3> 
+                  </div>
+                </div>
+              </div>
+            </div>
             <button type="submit" class="btn">Add camper</button>
           </form>
         </div>
@@ -125,6 +133,7 @@
       </div>
     </div>
   </div>
+
   <script>
     function onDragStart(event) {
       event
@@ -164,7 +173,7 @@
       const draggableElement = document.getElementById(id);
       const dropzone = event.currentTarget;
       if (dropzone.id === "hidden-trash") {
-        dropzone.appendChild(draggableElement);
+        draggableElement.parentNode.removeChild(draggableElement);
         let zoomable = document.getElementById("trash-icon");
         zoomable.style.transform = "scale(1)";
       } else if (dropzone.classList.contains("parent") && event.target.id != "added-items") {
