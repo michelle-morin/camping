@@ -16,7 +16,7 @@ export function apiCalls(location) {
       } else if (currentTrailResponse.trails.length > 0) {
         $("#more-info h3").html(`${currentTrailResponse.trails[0].name}`);
         let summary;
-        if (currentTrailResponse.trails[0].summary === "Needs Adoption" || currentTrailResponse.trails[0].summary === "Needs Summary") {
+        if (currentTrailResponse.trails[0].summary === "Needs Adoption" || currentTrailResponse.trails[0].summary === "Needs Summary"|| currentTrailResponse.trails[0].summary === "Needs Adoption!") {
           summary = "unavailable";
         } else {
           summary = currentTrailResponse.trails[0].summary;
