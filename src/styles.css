@@ -177,6 +177,7 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
   height: 35px;
   width: auto;
   float: right;
+  cursor: pointer;
 }
 
 #campers .box {
