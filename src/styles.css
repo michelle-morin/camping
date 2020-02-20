@@ -173,13 +173,6 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
   color: #111111;
 }
 
-#campers .card .card-header img {
-  height: 35px;
-  width: auto;
-  float: right;
-  cursor: pointer;
-}
-
 #campers .box {
   max-height: 100px;
   max-width: 100px;
@@ -311,3 +304,15 @@ img#trash-icon {
   width: 50px;
   z-index: 3;
 }
+
+#dontRevertButton {
+  display: none;
+}
+#revertButton {
+  display: none;
+}
+
+#errorTrip {
+  display: none;
+}
+
