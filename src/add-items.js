@@ -1,3 +1,4 @@
+// All commented code in this file is for future local storage utilization
 import { apiCalls } from './api-calls.js';
 import { finalizeTrip } from './finalize.js';
 import $ from 'jQuery';
@@ -19,7 +20,6 @@ import './assets/images/default.png';
 // let storedStartDate = JSON.parse(localStorage.getItem('storedStartDate')|| "[]");
 // let storedEndDate = JSON.parse(localStorage.getItem('storedEndDate')|| "[]");
 // let storedCampers = JSON.parse(localStorage.getItem('storedCampers')|| "[]");
-let campers = [];
 
 export function initializePage() {
   $("form#initialize-trip").submit(function(event) {
@@ -51,7 +51,6 @@ export function initializePage() {
     localStorage.setItem('storedTripOrganizer', JSON.stringify(tripOrganizer));
     localStorage.setItem('storedStartDate', JSON.stringify(startDate));
     localStorage.setItem('storedEndDate', JSON.stringify(endDate));
-    campers.push(tripOrganizer);
 
     $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
     $("h3#trip-location").html(`${location}`);
@@ -64,7 +63,7 @@ export function initializePage() {
   });
 }
 
-export function addCamper() {
+export function addCamper(campers) {
   let counter = 2;
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
