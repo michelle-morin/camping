@@ -35,9 +35,9 @@ _We defined the minimum viable product (MVP) for this application as a webpage t
 
 _We defined various stretch goals for our project, including:_
 * using the Open Weather Map API to display weather information (temperature, sunrise/sunset times, etc.) for the user's input trip location. We accomplished this stretch goal, but the API currently retrieves _current_ weather rather than weather for the user's input dates. Retrieving weather for a specified date range is a paid service of the Open Weather Maps API that we did not invest in for this project, but could be easily integrated.
-* figuring out a local storage option, so that a user could save a trip's information and return to it later (e.g., anytime before cache is cleared) rather than planning a whole trip in one sitting. A stretch strech goal of this concept would be to allow users to contribute to the list from separate computers (e.g., each camper can sign into a trip once added, then contribute to trip planning simultaneously).
+* figuring out a local storage option, so that a user could save a trip's information and return to it later (e.g., anytime before cache is cleared) rather than planning a whole trip in one sitting. A stretch strech goal of this concept would be to allow users to contribute to the list from separate computers (e.g., each camper can sign into a trip once added, then contribute to trip planning simultaneously). Current status: when a user starts a trip (upon splash screen form submission) and when a user clicks the "finalize trip" button, all camper names and items within the campers' respective cards is stored in local storage.
 * sending an email to each camper confirming their packing list once the trip packing is finalized (e.g., after a user clicks a "finalize trip" button on the main page)
-* incorporating the ability to delete campers and items once added
+* incorporating the ability to delete campers and items once added. Current status: we added functionality to delete items from the page. Current goal is now to add functionality to be able to delete a camper once all items in that camper's card are removed, otherwise display a modal instructing the user to remove the items.
 
 ## Setup/Installation Requirements
 
