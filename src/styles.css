@@ -174,10 +174,27 @@ form#add-camper button.btn:hover, form#add-known-item button.btn:hover, form#add
 }
 
 #campers .card .card-header img {
+  display: none;
   height: 35px;
   width: auto;
   float: right;
+}
+
+#campers .card .card-header:hover {
   cursor: pointer;
+  color: #fd8b17;
+}
+
+#campers .card .card-header:hover img {
+  display: block;
+  height: 35px;
+  width: auto;
+  float: right;
+}
+
+#campers .card #permanent:hover {
+  cursor: default;
+  color: #111111;
 }
 
 #campers .box {

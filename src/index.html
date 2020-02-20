@@ -108,6 +108,15 @@
       <div class="row align-items-start">
         <div class="col-md-5">
           <div id="campers">
+            <div class="modal" id="hasItems" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <h3>Please reassign items before removing this camper!</h3> 
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-7">
@@ -171,7 +180,16 @@
     function giveEmTheAxe(event) {
       let cardHeader = event.target;
       let parentCard = cardHeader.parentNode;
-      parentCard.parentNode.removeChild(parentCard);
+      let cardBody = parentCard.childNodes[1];
+      if (cardBody.childNodes.length === 0) {
+        parentCard.parentNode.removeChild(parentCard);
+      } else {
+        let modal = document.getElementById("hasItems");
+        modal.style.display = "block";
+        setTimeout(function() {
+          modal.style.display = "none";
+        }, 2000);
+      }
      }
 
     function onDrop(event) {
