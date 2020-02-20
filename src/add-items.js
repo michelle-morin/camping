@@ -31,6 +31,7 @@ export function initializePage() {
     let formatStartDate = startDate.toDateString();
     let formatEndDate = endDate.toDateString();
     let reformatStartDate = formatStartDate.slice(0,11);
+    let closeImgUrl = `https://static.thenounproject.com/png/240658-200.png`;
 
     if (startDate >= endDate) {
       $("#errorDate").show();
@@ -52,7 +53,7 @@ export function initializePage() {
     localStorage.setItem('storedStartDate', JSON.stringify(startDate));
     localStorage.setItem('storedEndDate', JSON.stringify(endDate));
 
-    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer}</div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
+    $("#campers").append(`<div class="card"><div class="card-header">${tripOrganizer} <img src="${closeImgUrl}" alt="X icon" id="X1"></div><div class="card-body parent" id="${tripOrganizer}1" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
     $("h3#trip-location").html(`${location}`);
     $("h3#trip-date").html(`${reformatStartDate} — ${formatEndDate}`);
     $("#splash-screen").hide();
@@ -67,8 +68,10 @@ export function addCamper(campers) {
   let counter = 2;
   $("form#add-camper").submit(function(event) {
     event.preventDefault();
+    let closeImgUrl = `https://static.thenounproject.com/png/240658-200.png`;
     let inputCamper = $("input#camper").val();
     let inputCamperCounter = inputCamper + (counter).toString();
+    let closeOutCounter = "X" + (counter).toString();
     if (campers.includes(inputCamperCounter)){
       $("#errorCamper").show();
       setTimeout(function() {
@@ -76,7 +79,7 @@ export function addCamper(campers) {
       }, 2000);
     } else {
       campers.push(inputCamperCounter);
-      $("#campers").append(`<div class="card"><div class="card-header">${inputCamper}</div><div class="card-body parent" id="${inputCamperCounter}" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
+      $("#campers").append(`<div class="card"><div class="card-header">${inputCamper} <img id="${closeOutCounter}" src="${closeImgUrl}" alt="X icon"></div><div class="card-body parent" id="${inputCamperCounter}" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
       $("input#camper").val("");
       counter++;
       finalizeTrip();
