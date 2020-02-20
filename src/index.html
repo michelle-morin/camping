@@ -36,7 +36,19 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-block">Start planning!</button>
+        <div class="modal" id="errorTrip" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h3>You already have a trip planned!</h3> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-block" id="revertButton">Yes! Take me to my previously planned trip!</button>
+        <button type="button" class="btn btn-block" id="dontRevertButton">Abandon the old trip. I'd like to start over!</button>
+
+        <button type="submit" class="btn btn-block" id= "startPlanningButton">Start planning!</button>
       </form>
     </div>
 
@@ -167,17 +179,6 @@
         parentCard.style.border = "2px solid #111111";
       }
     }
-
-    function giveEmTheAxe(event) {
-      event.preventDefault();
-      $(document).click('.parent img', function(){
-        let imgClicked = event.target;
-        console.log("Click");
-        let parentHeader = imgClicked.parent().get();
-        let parentCard = parentHeader.parent().get();
-        parentCard.parentNode.removeChild(parentCard);
-      });
-     }
 
     function onDrop(event) {
       const id = event.dataTransfer.getData('text');
