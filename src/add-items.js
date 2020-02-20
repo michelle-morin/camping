@@ -44,7 +44,7 @@ export function initializePage() {
     }
     // if (storedLocation != "" || storedStartDate != "" || storedEndDate != "") {
       if (storedCampers.length > 0){
-        console.log("storedCampers isn't empty!")
+        console.log("storedCampers isn't empty")
       $("#errorTrip").show();
       setTimeout(function() {
         $("#errorTrip").hide();
