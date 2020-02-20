@@ -90,7 +90,7 @@ export function addCamper(campers) {
       }, 2000);
     } else {
       campers.push(inputCamperCounter);
-      $("#campers").append(`<div class="card"><div class="card-header">${inputCamper} <img id="${closeOutCounter}" src="${closeImgUrl}" alt="X icon"></div><div class="card-body parent" id="${inputCamperCounter}" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
+      $("#campers").append(`<div class="card"><div class="card-header" onclick="giveEmTheAxe(event);">${inputCamper} <img id="${closeOutCounter}" src="${closeImgUrl}" alt="remove camper"></div><div class="card-body parent" id="${inputCamperCounter}" ondragover="onDragOver(event);" ondragenter="onDragEnter(event);" ondragleave="onDragLeave(event);" ondrop="onDrop(event);"></div></div>`);
       $("input#camper").val("");
       counter++;
       finalizeTrip();
