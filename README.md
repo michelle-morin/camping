@@ -14,7 +14,6 @@ _Splash screen, where user completes form:_
 _Main screen, where user can add/move items into different packing lists or the trash:_
 ![main page](src/assets/images/mainpage.png)
 
-
 ## Specifications:
 
 | Specification | Example Input | Example Output |
@@ -74,7 +73,7 @@ _Clone this repository via Terminal using the following commands:_
 * ``$ cd camping``
 
 _Confirm that you have navigated to the camping directory (e.g., by entering the command_ ``pwd`` _in Terminal). Next, add a file named .env to project root directory (e.g., by entering the command_ ``touch .env`` _in Terminal)._
-* _Make an API key for the [Hiking Project Data API](https://www.hikingproject.com/data) by navigating to the linked website and clicking "sign up of login to get an API Key"_
+* _Make an API key for the [Hiking Project Data API](https://www.hikingproject.com/data) by navigating to the linked website and clicking "sign up or login to get an API Key"_
 * _Store your API key for the Hiking Project API in first line of the .env file in the following format: API_KEY = {replace curly braces and this text with your API key}_
 * _Make an API key for the [OpenCage Geocoding API](https://opencagedata.com/api) by navigating to the linked website and selecting "sign up for your free API key" under QuickStart._
 * _Store your API key for the OpenCage Geocoding API in second line of the .env file in the following format: GEO_API_KEY = {replace curly braces and this text with your API key}_
