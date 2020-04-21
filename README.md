@@ -6,7 +6,7 @@
 
 ## Description
 
-_This application allows a user to organize a camping trip. The webpage allows a user to input their name, start and end dates for the trip, and a destination (Town, State) and, once submitted, displays a trip planning interface. Users can add other cmapers to the attendee list, add items to-be-packed to a collective packing list, and assign to-be-packed items to individual attendees by dragging the items from the collective packing list and dropping the items into an individual's packing list area. The webpage also displays current weather information (temperature, humidity, sunrise and sunset times) as well as local trail information for the user's input location._
+_This application allows a user to organize a camping trip. The webpage allows a user to input their name, start and end dates for the trip, and a destination (Town, State) and, once submitted, displays a trip planning interface. Users can add other campers to the attendee list, add items to-be-packed to a collective packing list, and assign to-be-packed items to individual attendees by dragging the items from the collective packing list and dropping the items into an individual's packing list area. The webpage also displays current weather information (temperature, humidity, sunrise and sunset times) as well as local trail information for the user's input location._
 
 _Splash screen, where user completes form:_
 ![splashscreen](src/assets/images/splashscreen.png)
